@@ -5,6 +5,7 @@
 ########################################################### IMPORTS #################################################################################
 
 import time
+from time import sleep
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -21,9 +22,13 @@ def device_off(device):
     device.off()
     return 0
 
+def gethours():
+    hours = time.strftime("%H")
+    return hours
+
+    
 
 
 ##########################################################   SETUP  #################################################################################
 
 lamp = io.LED(pin=17, active_high=False)
-print (time.strftime("%H:%M:%S"))
