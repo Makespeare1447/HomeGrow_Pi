@@ -44,3 +44,8 @@ def DHT_read(sensor=Adafruit_DHT.DHT22, pin=dht_pin):
 
 lamp = io.LED(pin=17, active_high=False)
 dht_pin = 4
+
+
+
+
+print('Success! - you reached the end of the Program!')
