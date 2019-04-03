@@ -8,7 +8,7 @@ import time
 from time import sleep
 import os
 import matplotlib.pyplot as plt
-import pandas as pd
+#import pandas as pd
 import numpy as np
 import gpiozero as io 
 from smbus2 import SMBusWrapper, i2c_msg               #for i2c devices
