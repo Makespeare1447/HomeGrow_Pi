@@ -11,4 +11,19 @@ import pandas as pd
 import gpiozero as io 
 
 
-test123
+########################################################### FUNCTIONS ###############################################################################
+
+def device_on(device):
+    device.on()
+    return 0
+
+def device_off(device):
+    device.off()
+    return 0
+
+
+
+##########################################################   SETUP  #################################################################################
+
+lamp = io.LED(pin=17, active_high=False)
+print (time.strftime("%H:%M:%S"))
