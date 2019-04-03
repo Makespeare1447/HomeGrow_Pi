@@ -9,6 +9,7 @@ from time import sleep
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import gpiozero as io 
 
 
@@ -27,8 +28,6 @@ def gethours():
     return hours
 
     
-
-
 ##########################################################   SETUP  #################################################################################
 
 lamp = io.LED(pin=17, active_high=False)
