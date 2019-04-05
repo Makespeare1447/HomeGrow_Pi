@@ -64,10 +64,10 @@ buzzer = io.TonalBuzzer(buzzer_pin)
 temperature = 0
 humidity = 0
 
-beep(buzzer)
 
 
 
 
 
+beep(buzzer) #final beep
 print('Success! - you reached the end of the Program!')
