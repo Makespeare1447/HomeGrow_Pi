@@ -37,9 +37,12 @@ def gethours():
 def DHT_read(sensor, pin):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     return (round(humidity, 1), round(temperature, 1))
-
-
     
+def beep():
+    buzzer.play(Tone(500.0)) # Hz
+sleep(0.15)
+buzzer.stop()
+
 ##########################################################   SETUP  #################################################################################
 #setup is executed once at startup
 #pin declaration:
@@ -61,9 +64,7 @@ buzzer = io.TonalBuzzer(buzzer_pin)
 temperature = 0
 humidity = 0
 
-buzzer.play(Tone(500.0)) # Hz
-sleep(0.15)
-buzzer.stop()
+beep()
 
 
 
