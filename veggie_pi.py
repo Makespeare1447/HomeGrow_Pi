@@ -33,7 +33,7 @@ def gethours():
     hours = time.strftime("%H")
     return hours
 
-def DHT_read(sensor=Adafruit_DHT.DHT22, pin=dht_pin):
+def DHT_read(sensor, pin):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     return (round(humidity, 1), round(temperature, 1))
 
@@ -42,7 +42,8 @@ def DHT_read(sensor=Adafruit_DHT.DHT22, pin=dht_pin):
 ##########################################################   SETUP  #################################################################################
 
 lamp = io.LED(pin=17, active_high=False)
-#dht_pin = 4
+dht1 = Adafruit_DHT.DHT22
+dht_pin = 4
 
 
 
