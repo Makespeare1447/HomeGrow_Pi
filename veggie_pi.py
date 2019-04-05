@@ -35,8 +35,7 @@ def gethours():
 
 def DHT_read(sensor=Adafruit_DHT.DHT22, pin=dht_pin):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-
-    return [round(humidity, 1), round(temperature, 1)]
+    return (round(humidity, 1), round(temperature, 1))
 
 
     
