@@ -62,8 +62,8 @@ temperature = 0
 humidity = 0
 
 buzzer.play(Tone(500.0)) # Hz
-sleep(5)
-
+sleep(0.5)
+buzzer.stop()
 
 
 
