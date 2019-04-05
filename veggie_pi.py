@@ -48,15 +48,30 @@ lamp_pin = 17
 pump_pin = 27
 fan1_pin = 22 
 dht1_pin = 4
+buzzer_pin = 14
+
 lamp = io.LED(pin=lamp_pin, active_high=False)
 pump = io.LED(pin=pump_pin, active_high=False)
 dht1 = Adafruit_DHT.DHT22
+buzzer = TonalBuzzer(buzzer_pin)
 
 
 #variable initialisation:
 temperature = 0
 humidity = 0
 
+b.play(Tone("A4"))
+sleep(5)
+b.play(Tone(220.0)) # Hz
+sleep(5)
+b.play(Tone(60)) # middle C in MIDI notation
+sleep(5)
+b.play("A4")
+sleep(5)
+b.play(220.0)
+sleep(5)
+b.play(60)
+sleep(5)
 
 
 
