@@ -10,7 +10,8 @@ import os
 import matplotlib.pyplot as plt
 #import pandas as pd
 import numpy as np
-import gpiozero as io 
+import gpiozero as io
+from gpiozero.tones import Tone 
 from smbus2 import SMBusWrapper, i2c_msg               #for i2c devices
 import Adafruit_DHT
 import Adafruit_Python_SSD1306                                #oled
@@ -53,7 +54,7 @@ buzzer_pin = 22
 lamp = io.LED(pin=lamp_pin, active_high=False)
 pump = io.LED(pin=pump_pin, active_high=False)
 dht1 = Adafruit_DHT.DHT22
-buzzer = TonalBuzzer(buzzer_pin)
+buzzer = io.TonalBuzzer(buzzer_pin)
 
 
 #variable initialisation:
