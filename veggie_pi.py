@@ -42,7 +42,7 @@ def DHT_read(sensor=Adafruit_DHT.DHT22, pin=dht_pin):
 ##########################################################   SETUP  #################################################################################
 
 lamp = io.LED(pin=17, active_high=False)
-dht_pin = 4
+#dht_pin = 4
 
 
 
