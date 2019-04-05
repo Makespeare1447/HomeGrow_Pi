@@ -40,10 +40,16 @@ def DHT_read(sensor, pin):
 
     
 ##########################################################   SETUP  #################################################################################
-
-lamp = io.LED(pin=17, active_high=False)
+lamp_pin = 17
+pump_pin = 27
+dht1_pin = 4
+lamp = io.LED(pin=lamp_pin, active_high=False)
+pump = io.LED(pin=pump_pin, active_high=False)
 dht1 = Adafruit_DHT.DHT22
-dht_pin = 4
+
+
+
+
 
 
 
