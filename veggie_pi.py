@@ -40,8 +40,8 @@ def DHT_read(sensor, pin):
     
 def beep(buzzer):
     buzzer.play(Tone(500.0)) # Hz
-sleep(0.15)
-buzzer.stop()
+    sleep(0.15)
+    buzzer.stop()
 
 ##########################################################   SETUP  #################################################################################
 #setup is executed once at startup
