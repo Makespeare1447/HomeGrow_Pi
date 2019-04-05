@@ -61,17 +61,7 @@ buzzer = io.TonalBuzzer(buzzer_pin)
 temperature = 0
 humidity = 0
 
-buzzer.play(Tone("A4"))
-sleep(5)
-buzzer.play(Tone(220.0)) # Hz
-sleep(5)
-buzzer.play(Tone(60)) # middle C in MIDI notation
-sleep(5)
-buzzer.play("A4")
-sleep(5)
-buzzer.play(220.0)
-sleep(5)
-buzzer.play(60)
+buzzer.value(1)
 sleep(5)
 
 
