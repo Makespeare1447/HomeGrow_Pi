@@ -64,7 +64,7 @@ buzzer = io.TonalBuzzer(buzzer_pin)
 temperature = 0
 humidity = 0
 
-beep()
+beep(buzzer)
 
 
 
