@@ -61,7 +61,7 @@ buzzer = io.TonalBuzzer(buzzer_pin)
 temperature = 0
 humidity = 0
 
-buzzer.max_tone()
+buzzer.play(Tone(500.0)) # Hz
 sleep(5)
 
 
