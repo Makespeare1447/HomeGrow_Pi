@@ -58,6 +58,7 @@ lamp = io.LED(pin=lamp_pin, active_high=False)
 pump = io.LED(pin=pump_pin, active_high=False)
 dht1 = Adafruit_DHT.DHT22
 buzzer = io.TonalBuzzer(buzzer_pin)
+fan1 = io.PWMLED(fan1_pin)
 
 
 #variable initialisation:
