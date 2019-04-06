@@ -13,7 +13,7 @@ import Adafruit_Python_SSD1306                                #oled
 
 
 
-fan = PWMLED(21)
+fan = io.PWMLED(21)
 
 
 for i in range(10):
