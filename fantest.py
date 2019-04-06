@@ -18,7 +18,7 @@ fan = io.PWMLED(21)
 
 for i in range(10):
     speed = i*0.1
-    fan.value() = speed
+    fan.value = speed
     sleep(3)
 
 
