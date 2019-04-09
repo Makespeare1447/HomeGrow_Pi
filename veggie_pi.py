@@ -68,7 +68,7 @@ humidity = 0
 for i in range(10):
     (humidity, temperature) = DHT_read(dht1,dht1_pin)
     print(humidity, temperature)
-    sleep(1)
+    sleep(0.2)
 
 
 beep(buzzer) #final beep
