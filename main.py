@@ -73,6 +73,5 @@ while(True):
 
 
 
-
-    sleep(1)  #main delay
-    print('blubb')
+    print('debug: mainloop einmal durch')
+    sleep(2)  #main delay
