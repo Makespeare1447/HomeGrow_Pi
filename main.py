@@ -71,3 +71,8 @@ while(True):
     else:
         fan1.off()
 
+
+
+
+    sleep(1)  #main delay
+    print('blubb')
