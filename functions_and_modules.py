@@ -20,7 +20,7 @@ import Adafruit_Python_SSD1306
 
 def gethours():
     hours = time.strftime("%H")
-    return hours
+    return int(hours)
 
 def DHT_read(sensor, pin):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)

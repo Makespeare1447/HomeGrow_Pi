@@ -30,7 +30,7 @@ humidity = 0
 gas = 0
 hours = 0
 emergency = False
-daytime_interval = [8,20]  #time interval for lights on
+daytime_interval = (8,20)  #time interval for lights on
 
 
 #set device states (setup)
