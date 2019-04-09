@@ -17,13 +17,6 @@ import Adafruit_Python_SSD1306
 
 ########################################################### FUNCTIONS ###############################################################################
 
-def device_on(device):
-    device.on()
-    return 0
-
-def device_off(device):
-    device.off()
-    return 0
 
 def gethours():
     hours = time.strftime("%H")
@@ -48,4 +41,5 @@ def emergency():
     fan1.off()
     while(True):
         print("Emergency Shutdown")
-        sleep(5)
+        beep(buzzer)
+        sleep(10)
