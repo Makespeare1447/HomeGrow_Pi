@@ -59,11 +59,15 @@ while(True):
     else:
         daytime = False
     
-    #lights:
+    #light control:
     if(daytime==True and humidity>5 and humidity < 80):
         lamp.on()
     else:
         lamp.off()
 
-    #humidity regulation via fan:
-    
+    #fan control:
+    if(humidity>70 or temperature >32):
+        fan1.on()
+    else:
+        fan1.off()
+
