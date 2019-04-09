@@ -41,3 +41,11 @@ def beep(buzzer):
     buzzer.play(Tone(500.0)) # Hz
     sleep(0.15)
     buzzer.stop()
+
+def emergency():
+    lamp.off()
+    pump.off()
+    fan1.off()
+    while(True):
+        print("Emergency Shutdown")
+        sleep(5)

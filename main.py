@@ -24,13 +24,46 @@ dht1 = Adafruit_DHT.DHT22
 buzzer = io.TonalBuzzer(buzzer_pin)
 fan1 = io.PWMLED(fan1_pin)
 
-
 #variable initialisation:
 temperature = 0
 humidity = 0
 gas = 0
+hours = 0
+emergency = False
+daytime_interval = (8,20)  #time interval for lights on
 
 
+#set device states (setup)
+lamp.off()
+pump.off()
+fan1.off()
 
-beep(buzzer) #final beep
-print('Success! - you reached the end of the Program!')
+beep(buzzer)      #initial startup beep
+
+
+##########################################################   MAIN LOOP  #################################################################################
+
+while(True):
+    #Measurements:
+    (humidity, temperature) = DHT_read(dht1, dht1_pin)
+    hours = gethours()
+
+    #check for emergency state:
+    if((humidity<5 or humidity>95) and (temperature<12 or temperature>40)):
+        emergency = True
+        emergency()             #trigger emergency routine
+
+    #check if daytime:
+    if(hours>daytime_interval[0] and hours<daytime_interval[1]):
+        daytime = True
+    else:
+        daytime = False
+    
+    #lights:
+    if(daytime==True and humidity>5 and humidity < 80):
+        lamp.on()
+    else:
+        lamp.off()
+
+    #humidity regulation via fan:
+    
