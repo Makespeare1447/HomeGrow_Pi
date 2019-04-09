@@ -29,6 +29,7 @@ temperature = 0
 humidity = 0
 gas = 0
 hours = 0
+hours_old = 0
 emergency = False
 daytime_interval = (8,20)  #time interval for lights on
 
@@ -44,10 +45,12 @@ beep(buzzer)      #initial startup beep
 ##########################################################   MAIN LOOP  #################################################################################
 
 while(True):
-    #Measurements:
-    (humidity, temperature) = DHT_read(dht1, dht1_pin)
+    #get actual time:
     hours = gethours()
 
+    #Measurements:
+    (humidity, temperature) = DHT_read(dht1, dht1_pin)
+    
     #check for emergency state:
     if((humidity<5 or humidity>95) and (temperature<12 or temperature>40)):
         emergency = True
@@ -72,6 +75,6 @@ while(True):
         fan1.off()
 
 
-
+    oldhours = hours
     print('debug: mainloop einmal durch')
     sleep(2)  #main delay
