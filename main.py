@@ -14,7 +14,7 @@ from functions_and_modules import *
 #fan1: humidity regulation, fan2: inhouse ventilation (air movement)
 lamp_pin = 17
 pump_pin = 27
-fan1_pin = 14 
+fan1_pin = 21 
 dht1_pin = 4
 buzzer_pin = 22
 
@@ -78,5 +78,5 @@ while(True):
 
     print('Humidity: {}'.format(humidity))
     print('Temperature: {}'.format(temperature))
-    print('debug: mainloop einmal durch')
+    print('debug: mainloop einmal durch\n')
     sleep(2)  #main delay
