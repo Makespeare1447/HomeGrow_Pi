@@ -63,7 +63,7 @@ while(True):
         daytime = False
     
     #light control:
-    if(daytime==True and humidity>5and humidity<85 and temperature <=37 and temperature >=12):
+    if(daytime==True and humidity>5 and humidity<85 and temperature <=37 and temperature >=12):
         lamp.on()
     else:
         lamp.off()
