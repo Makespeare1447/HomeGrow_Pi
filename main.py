@@ -31,7 +31,7 @@ gas = 0
 hours = 0
 hours_old = 0
 emergency = False
-daytime_interval = (8,21)  #time interval for lights on
+daytime_interval = (8,20)  #time interval for lights on
 
 
 #set device states (setup)
@@ -74,7 +74,9 @@ while(True):
     else:
         fan1.off()
 
-
     oldhours = hours
+
+    print('Humidity: {}'.format(humidity))
+    print('Temperature: {}'.format(temperature))
     print('debug: mainloop einmal durch')
     sleep(2)  #main delay
