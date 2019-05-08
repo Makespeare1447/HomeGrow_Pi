@@ -22,6 +22,7 @@ def gethours():
     hours = time.strftime("%H")
     return int(hours)
 
+
 def DHT_read(sensor, pin):
     sleep(0.1)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
@@ -50,3 +51,10 @@ def watering(pumptime):
         pump.on()
         sleep(pumptime)
         pump.off()
+
+def set_starttime():
+        start_time = time.time()
+        return start_time
+
+def time_since_start(start_time):
+        return((time.time() - start_time))

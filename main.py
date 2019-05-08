@@ -43,6 +43,7 @@ pump.off()
 fan1.off()
 
 beep(buzzer)      #initial startup beep
+start_time = set_starttime()
 
 
 ##########################################################   MAIN LOOP  #################################################################################
@@ -83,5 +84,6 @@ while(True):
     print('Humidity: {}'.format(humidity))
     print('Temperature: {}'.format(temperature))
     print('Cycles: {}\n'.format(cycles))
+    print('Time since programme start: {}'.format(time_since_start(start_time)))
 
     sleep(main_delay)  #main delay
