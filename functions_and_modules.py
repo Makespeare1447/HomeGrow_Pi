@@ -45,3 +45,8 @@ def emergency():
         print("Emergency Shutdown")
         beep(buzzer)
         sleep(10)
+
+def watering(pumptime):
+        pump.on()
+        sleep(pumptime)
+        pump.off()

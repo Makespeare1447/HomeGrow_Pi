@@ -32,6 +32,9 @@ hours = 0
 hours_old = 0
 emergency = False
 daytime_interval = (8,20)  #time interval for lights on
+pumptime = 10              #seconds for plantwatering per wateringcycle
+main_delay = 2
+cycles = 0
 
 
 #set device states (setup)
@@ -75,8 +78,10 @@ while(True):
         fan1.off()
 
     oldhours = hours
+    cycles = cycles + 1         #increment cycles for debugging
 
     print('Humidity: {}'.format(humidity))
     print('Temperature: {}'.format(temperature))
-    print('debug: mainloop einmal durch\n')
-    sleep(2)  #main delay
+    print('Cycles: {}\n'.format(cycles))
+
+    sleep(main_delay)  #main delay
