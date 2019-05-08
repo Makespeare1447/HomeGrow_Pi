@@ -83,7 +83,7 @@ while(True):
 
     print('Humidity: {}'.format(humidity))
     print('Temperature: {}'.format(temperature))
-    print('Cycles: {}\n'.format(cycles))
-    print('Time since programme start: {}'.format(time_since_start(start_time)))
+    print('Cycles: {}'.format(cycles))
+    print('Seconds since programme start: {}\n'.format(time_since_start(start_time)))
 
     sleep(main_delay)  #main delay
