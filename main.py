@@ -33,8 +33,8 @@ hours_old = 0
 emergency = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 10              #seconds for plantwatering per wateringcycle
-main_delay = 2
-cycles = 0
+main_delay = 2             #delay in seconds for main loop
+cycles = 0                 #cyclenumber for debugging
 
 
 #set device states (setup)
