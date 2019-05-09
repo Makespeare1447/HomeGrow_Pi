@@ -73,10 +73,14 @@ while(True):
         lamp.off()
 
     #fan control:
-    if(humidity>70 or temperature>32):
-        fan1.on()
+    if(cycle%5 == 0):                                                   #check every 5 cycles if fan is necessary (hysteresis)
+        if((humidity>70 or temperature>32) and daytime==True):
+            fan1.on()
+        else:
+            fan1.off()
     else:
-        fan1.off()
+        pass
+
 
     oldhours = hours
     cycles = cycles + 1         #increment cycles for debugging
