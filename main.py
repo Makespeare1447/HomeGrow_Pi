@@ -30,7 +30,7 @@ humidity = 0
 gas = 0
 hours = 0
 hours_old = 0
-emergency = False
+emergencystate = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 10              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
@@ -55,12 +55,12 @@ while(True):
     #Measurements:
     (humidity, temperature) = DHT_read(dht1, dht1_pin)
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
-        emergency = True
+        emergencystate = True
         emergency()
 
     #check for emergency state:
     if((humidity<5 or humidity>95) and (temperature<12 or temperature>40)):
-        emergency = True
+        emergencystate = True
         emergency()             #trigger emergency routine
 
     #check if daytime:
