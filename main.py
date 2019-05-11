@@ -54,7 +54,10 @@ while(True):
 
     #Measurements:
     (humidity, temperature) = DHT_read(dht1, dht1_pin)
-    
+    if (type(humidity) != float or type(temperature) != float):         #check if DHT works
+        emergency = True
+        emergency()
+
     #check for emergency state:
     if((humidity<5 or humidity>95) and (temperature<12 or temperature>40)):
         emergency = True
