@@ -56,12 +56,12 @@ while(True):
     (humidity, temperature) = DHT_read(dht1, dht1_pin)
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
         emergencystate = True
-        emergency()
+        emergency(lamp, pump, fan1, buzzer)
 
     #check for emergency state:
     if((humidity<5 or humidity>95) and (temperature<12 or temperature>40)):
         emergencystate = True
-        emergency()             #trigger emergency routine
+        emergency(lamp, pump, fan1, buzzer)             #trigger emergency routine
 
     #check if daytime:
     if(hours>daytime_interval[0] and hours<daytime_interval[1]):

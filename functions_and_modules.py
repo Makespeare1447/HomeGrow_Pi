@@ -38,7 +38,7 @@ def beep(buzzer):
     sleep(0.15)
     buzzer.stop()
 
-def emergency():
+def emergency(lamp, pump, fan1, buzzer):
     lamp.off()
     pump.off()
     fan1.off()
@@ -47,7 +47,7 @@ def emergency():
         beep(buzzer)
         sleep(10)
 
-def watering(pumptime):
+def watering(pump, pumptime):
         pump.on()
         sleep(pumptime)
         pump.off()
