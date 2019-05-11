@@ -27,7 +27,7 @@ def DHT_read(sensor, pin):
     sleep(0.1)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     sleep(1)
-    return (round(humidity, 1), round(temperature, 1))
+    return (humidity, temperature)
     
 def beep(buzzer):
     buzzer.play(Tone(500.0)) # Hz
