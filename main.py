@@ -63,6 +63,9 @@ while(True):
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
         emergencystate = True
         emergency(lamp, pump, fan1, buzzer)
+    humidity = round(humidity, 2)
+    temperature = round(temperature, 2)
+
 
     #check for emergency state:
     if((humidity<5 or humidity>98) and (temperature<12 or temperature>40)):
@@ -92,6 +95,6 @@ while(True):
     print('Humidity: {}'.format(humidity))
     print('Temperature: {}'.format(temperature))
     print('Cycles: {}'.format(cycles))
-    print('Seconds since programme start: {}\n'.format(time_since_start(start_time)))
+    print('Seconds since program start: {}\n'.format(time_since_start(start_time)))
 
     sleep(main_delay)  #main delay
