@@ -52,6 +52,12 @@ while(True):
     #get actual time:
     hours = gethours()
 
+    #check if daytime:
+    if(hours>daytime_interval[0] and hours<daytime_interval[1]):
+        daytime = True
+    else:
+        daytime = False
+
     #Measurements:
     (humidity, temperature) = DHT_read(dht1, dht1_pin)
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
@@ -63,11 +69,6 @@ while(True):
         emergencystate = True
         emergency(lamp, pump, fan1, buzzer)             #trigger emergency routine
 
-    #check if daytime:
-    if(hours>daytime_interval[0] and hours<daytime_interval[1]):
-        daytime = True
-    else:
-        daytime = False
     
     #light control:
     if(daytime==True and humidity>5 and humidity<85 and temperature <=37 and temperature >=12):
