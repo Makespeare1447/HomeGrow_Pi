@@ -30,11 +30,13 @@ humidity = 0
 gas = 0
 hours = 0
 hours_old = 0
+cycles = 0                 #cyclenumber for debugging
 emergencystate = False
+
+#parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 10              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
-cycles = 0                 #cyclenumber for debugging
 
 
 #set device states (setup)
@@ -68,13 +70,13 @@ while(True):
 
 
     #check for emergency state:
-    if((humidity<5 or humidity>98) and (temperature<12 or temperature>40)):
+    if((humidity<5 or humidity>98) and (temperature<5 or temperature>38)):
         emergencystate = True
         emergency(lamp, pump, fan1, buzzer)             #trigger emergency routine
 
     
     #light control:
-    if(daytime==True and humidity>5 and humidity<85 and temperature <=37 and temperature >=12):
+    if(daytime==True and humidity>5 and humidity<85 and temperature<=37 and temperature>=12):
         lamp.on()
     else:
         lamp.off()
