@@ -53,7 +53,7 @@ while(True):
     hours = gethours()
 
     #check if daytime:
-    if(hours>daytime_interval[0] and hours<daytime_interval[1]):
+    if(hours>=daytime_interval[0] and hours<daytime_interval[1]):
         daytime = True
     else:
         daytime = False
