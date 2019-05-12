@@ -22,6 +22,9 @@ def gethours():
     hours = time.strftime("%H")
     return int(hours)
 
+def getminutes():
+    minutes = time.strftime("%M")
+    return int(minutes)
 
 def DHT_read(sensor, pin):
     sleep(0.1)
@@ -48,9 +51,17 @@ def emergency(lamp, pump, fan1, buzzer):
         sleep(10)
 
 def watering(pump, pumptime):
+        print('watering plants...\n')
         pump.on()
         sleep(pumptime)
         pump.off()
+
+def vent_moisture(fan1):
+        print('venting moist air...\n')
+        fan1.on()
+        sleep(60)
+        fan1.off()
+
 
 def set_starttime():
         start_time = time.time()

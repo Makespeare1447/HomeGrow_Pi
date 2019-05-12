@@ -30,6 +30,8 @@ humidity = 0
 gas = 0
 hours = 0
 hours_old = 0
+minutes = 0
+minutes_old = 0
 cycles = 0                 #cyclenumber for debugging
 emergencystate = False
 
@@ -53,6 +55,7 @@ start_time = set_starttime()
 while(True):
     #get actual time:
     hours = gethours()
+    minutes = getminutes()
 
     #check if daytime:
     if(hours>=daytime_interval[0] and hours<daytime_interval[1]):
@@ -73,6 +76,10 @@ while(True):
     if((humidity<5 or humidity>98) and (temperature<5 or temperature>38)):
         emergencystate = True
         emergency(lamp, pump, fan1, buzzer)             #trigger emergency routine
+
+    #check for venting:
+    if((humidity>60 and hours == 7 and minutes == 55 and emergencystate == False)):
+        vent_moisture(fan1)
 
     
     #light control:
