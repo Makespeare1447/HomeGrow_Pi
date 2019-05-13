@@ -17,6 +17,7 @@ pump_pin = 27
 fan1_pin = 21 
 dht1_pin = 4
 buzzer_pin = 22
+iaq_adress = 90
 
 lamp = io.LED(pin=lamp_pin, active_high=False)
 pump = io.LED(pin=pump_pin, active_high=False)

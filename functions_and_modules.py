@@ -69,3 +69,23 @@ def set_starttime():
 
 def time_since_start(start_time):
         return((time.time() - start_time))
+
+def i2c_iAq_read(address):
+    """
+     Read 9 bits from iAq (default adress 90)
+     returns CO2, R, TVOC
+    """
+    with SMBusWrapper(1) as bus:
+        # Read 64 bytes from address 80
+        msg = i2c_msg.read(address, 9)
+        bus.i2c_rdwr(msg)
+    byte = []
+
+    for value in msg:
+        byte.append(value)
+
+    CO2 = byte[0] * 2 ** 8 + byte[1]
+    R = byte[4] * 2 ** 16 + byte[5] * 2 ** 8 + byte[6]
+    TVOC = byte[7] * 2 ** 8 + byte[8]
+
+    return [CO2, R, TVOC]
