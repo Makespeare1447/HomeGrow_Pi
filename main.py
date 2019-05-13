@@ -48,7 +48,7 @@ pump.off()
 fan1.off()
 
 beep(buzzer)      #initial startup beep
-start_time = set_starttime()
+start_time = round(set_starttime(), 1)
 
 
 ##########################################################   MAIN LOOP  #################################################################################
