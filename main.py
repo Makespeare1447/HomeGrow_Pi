@@ -82,11 +82,11 @@ while(True):
     #check for emergency state:
     if((humidity<5 or humidity>98) and (temperature<5 or temperature>38)):
         emergencystate = True
-        emergency(lamp, pump, fan1, buzzer)             #trigger emergency routine
+        emergency(lamp, pump, fan1, fan2, buzzer)             #trigger emergency routine
 
     #check for venting:
     if((humidity>60 and hours == 7 and minutes == 55 and emergencystate == False)):
-        vent_moisture(fan1)
+        vent_moisture(fan1, fan2)
 
     
     #light control:
@@ -117,7 +117,7 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 1)))
 
-    fan2.on()
+    
 
 
     

@@ -41,10 +41,11 @@ def beep(buzzer):
     sleep(0.15)
     buzzer.stop()
 
-def emergency(lamp, pump, fan1, buzzer):
+def emergency(lamp, pump, fan1, fan2, buzzer):
     lamp.off()
     pump.off()
     fan1.off()
+    fan2.off()
     while(True):
         print("Emergency Shutdown")
         beep(buzzer)
@@ -56,11 +57,13 @@ def watering(pump, pumptime):
         sleep(pumptime)
         pump.off()
 
-def vent_moisture(fan1):
+def vent_moisture(fan1, fan2):
         print('venting moist air...\n')
         fan1.on()
+        fan2.on()
         sleep(60)
         fan1.off()
+        fan2.off
 
 
 def set_starttime():
