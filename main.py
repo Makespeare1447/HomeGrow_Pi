@@ -15,7 +15,7 @@ from functions_and_modules import *
 lamp_pin = 17
 pump_pin = 27
 fan1_pin = 21
-fan2_pin 
+fan2_pin = 20
 dht1_pin = 4
 buzzer_pin = 22
 iaq_address = 90
