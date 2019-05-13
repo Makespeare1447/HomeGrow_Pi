@@ -28,6 +28,8 @@ fan1 = io.PWMLED(fan1_pin)
 #variable initialisation:
 temperature = 0
 humidity = 0
+tvoc = 0
+co2 = 0
 gas = 0
 hours = 0
 hours_old = 0
