@@ -88,4 +88,4 @@ def i2c_iAq_read(address):
     R = byte[4] * 2 ** 16 + byte[5] * 2 ** 8 + byte[6]
     TVOC = byte[7] * 2 ** 8 + byte[8]
 
-    return [CO2, R, TVOC]
+    return (CO2, R, TVOC)
