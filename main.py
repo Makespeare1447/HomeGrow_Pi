@@ -17,7 +17,7 @@ pump_pin = 27
 fan1_pin = 21 
 dht1_pin = 4
 buzzer_pin = 22
-iaq_adress = 90
+iaq_address = 90
 
 lamp = io.LED(pin=lamp_pin, active_high=False)
 pump = io.LED(pin=pump_pin, active_high=False)
@@ -71,6 +71,8 @@ while(True):
         emergency(lamp, pump, fan1, buzzer)
     humidity = round(humidity, 2)
     temperature = round(temperature, 2)
+    (co2, tvoc) = i2c_iAq_read(iaq_address)
+
 
 
     #check for emergency state:
@@ -102,8 +104,12 @@ while(True):
     oldhours = hours
     cycles = cycles + 1         #increment cycles for debugging
 
+
+    #printing out information in command line:
     print('Humidity: {}'.format(humidity))
     print('Temperature: {}'.format(temperature))
+    print('Co2: {}'.format(co2))
+    print('TVOC: {}'.format(tvoc))
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 1)))
 
