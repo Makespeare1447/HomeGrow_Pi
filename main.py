@@ -1,7 +1,8 @@
 #####################################################################################################################################################
 ########################                                    HEADER                              #####################################################
 #####################################################################################################################################################
-
+#information
+#iAQ Sensor Range:  co2: (450-2000) ppm,      tvoc: (125-600) ppb
 
 
 ########################################################### IMPORTS #################################################################################
@@ -80,7 +81,7 @@ while(True):
 
 
     #check for emergency state:
-    if(humidity<5 or humidity>98 or temperature<5 or temperature>38 or tvoc<125 or co2<450 or tvoc>1000 or co2>1000):
+    if(humidity<5 or humidity>98 or temperature<5 or temperature>38 or tvoc<125 or co2<450 or tvoc>450 or co2>1000):
         emergencystate = True
         emergency(lamp, pump, fan1, buzzer, humidity, temperature, co2, tvoc)             #trigger emergency routine
 
@@ -93,7 +94,7 @@ while(True):
         inhouseventilation(fan2)
 
     #light control:
-    if(daytime==True and humidity>5 and humidity<85 and temperature<=37 and temperature>=12 and tvoc<1000 and co2<1000):
+    if(daytime==True and humidity>5 and humidity<85 and temperature<=37 and temperature>=12 and tvoc<450 and co2<1000):
         lamp.on()
     else:
         lamp.off()
