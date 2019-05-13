@@ -90,7 +90,7 @@ while(True):
         vent_moisture(fan1, fan2)
 
     #check for inhouse ventilation:
-    if(daytime==True and cycles%500==0):
+    if(daytime==True and cycles%200==0):
         inhouseventilation(fan2)
 
     #light control:
