@@ -41,13 +41,17 @@ def beep(buzzer):
     sleep(0.15)
     buzzer.stop()
 
-def emergency(lamp, pump, fan1, fan2, buzzer):
+def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc):
     lamp.off()
     pump.off()
     fan1.off()
     fan2.off()
     while(True):
-        print("Emergency Shutdown")
+        print("Emergency Shutdown - last measurements: ")
+        print('Humidity: {}'.format(humidity))
+        print('Temperature: {}'.format(temperature))
+        print('Co2: {}'.format(co2))
+        print('TVOC: {}'.format(tvoc))
         beep(buzzer)
         sleep(10)
 
@@ -65,6 +69,11 @@ def vent_moisture(fan1, fan2):
         fan1.off()
         fan2.off
 
+def inhouseventilation(fan2):
+        print('moving air around...\n')
+        fan2.on()
+        sleep(10)
+        fan2.off()
 
 def set_starttime():
         start_time = time.time()
