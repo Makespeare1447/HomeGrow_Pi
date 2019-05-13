@@ -108,9 +108,7 @@ while(True):
     print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 1)))
 
 
-    #iaq prototyping:
-    co2 = i2c_iAq_read(ax50)[0]
-    print('co2: {}'.format(co2))
+
     
 
     sleep(main_delay)  #main delay
