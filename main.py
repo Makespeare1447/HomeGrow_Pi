@@ -14,7 +14,8 @@ from functions_and_modules import *
 #fan1: humidity regulation, fan2: inhouse ventilation (air movement)
 lamp_pin = 17
 pump_pin = 27
-fan1_pin = 21 
+fan1_pin = 21
+fan2_pin 
 dht1_pin = 4
 buzzer_pin = 22
 iaq_address = 90
@@ -24,6 +25,7 @@ pump = io.LED(pin=pump_pin, active_high=False)
 dht1 = Adafruit_DHT.DHT22
 buzzer = io.TonalBuzzer(buzzer_pin)
 fan1 = io.PWMLED(fan1_pin)
+fan2 = io.PWMLED(fan2_pin)
 
 #variable initialisation:
 temperature = 0
@@ -115,6 +117,7 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 1)))
 
+    fan2.on()
 
 
     
