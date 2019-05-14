@@ -4,11 +4,14 @@
 #information
 #iAQ Sensor Range:  co2: (450-2000) ppm,      tvoc: (125-600) ppb
 
+print('setting parameters and importing libraries...')
 
 ########################################################### IMPORTS #################################################################################
 from functions_and_modules import *
 
 ##########################################################   SETUP  #################################################################################
+
+
 #setup is executed once at startup
 #pin declaration:
 #lamp and pump are connected to the double relais module
@@ -54,7 +57,7 @@ fan1.off()
 
 beep(buzzer)      #initial startup beep
 start_time = round(set_starttime(), 1)
-
+print('starting up...\n')
 
 ##########################################################   MAIN LOOP  #################################################################################
 
