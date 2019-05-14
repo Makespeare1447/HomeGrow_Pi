@@ -127,10 +127,10 @@ while(True):
 
 
     #printing out information in command line:
-    print('Humidity: {}'.format(humidity))
-    print('Temperature: {}'.format(temperature))
+    print('Humidity: {}'.format(humidity) + ' %')
+    print('Temperature: {}'.format(temperature) + ' deg')
     print('Co2: {}'.format(co2) + ' ppm')
-    print('TVOC: {}'.format(tvoc))
+    print('TVOC: {}'.format(tvoc) + ' ppb')
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
