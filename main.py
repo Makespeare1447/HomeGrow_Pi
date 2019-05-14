@@ -132,7 +132,7 @@ while(True):
     print('Co2: {}'.format(co2))
     print('TVOC: {}'.format(tvoc))
     print('Cycles: {}'.format(cycles))
-    print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 0)))
+    print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0)))
 
     
     sleep(main_delay)  #main delay
