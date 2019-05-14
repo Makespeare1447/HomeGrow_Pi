@@ -48,7 +48,15 @@ emergencystate = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 10              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
-
+#absolute maximum values:
+co2_min = 450
+co2_max = 1550
+tvoc_min = 125
+tvoc_max = 450
+temp_min = 5
+temp_max = 36
+humidity_min = 15
+humidity_max = 98
 
 #set device states (setup)
 lamp.off()
@@ -84,20 +92,22 @@ while(True):
 
 
     #check for emergency state:
-    if(humidity<5 or humidity>98 or temperature<5 or temperature>38 or tvoc<125 or co2<450 or tvoc>450 or co2>1500):
+    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or tvoc<tvoc_min
+     or co2<co2_min or tvoc>tvoc_max or co2>co2_max):
         emergencystate = True
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc)             #trigger emergency routine
 
-    #check for venting:
+    #venting moist air in the morning and in the evening
     if((humidity>60 and (hours==7 or hours==19) and minutes==55 and emergencystate==False)):
         vent_moisture(fan1, fan2)
 
     #check for inhouse ventilation:
-    if(daytime==True and cycles%200==0):
+    if(daytime==True and cycles%100==0 and emergencystate==False):
         inhouseventilation(fan2)
 
     #light control:
-    if(daytime==True and humidity>5 and humidity<85 and temperature<=37 and temperature>=12 and tvoc<450 and co2<1500):
+    if(daytime==True and emergencystate==False and humidity>humidity_min and humidity<humidity_max and temperature<=temp_max 
+    and temperature>=temp_min and tvoc<tvoc_max and co2<co2_max):
         lamp.on()
     else:
         lamp.off()
@@ -113,7 +123,7 @@ while(True):
 
 
     oldhours = hours
-    cycles = cycles + 1         #increment cycles for debugging
+    cycles = cycles + 1         
 
 
     #printing out information in command line:
@@ -122,11 +132,7 @@ while(True):
     print('Co2: {}'.format(co2))
     print('TVOC: {}'.format(tvoc))
     print('Cycles: {}'.format(cycles))
-    print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 1)))
+    print('Seconds since program start: {}\n'.format(round(time_since_start(start_time), 0)))
 
     
-
-
-    
-
     sleep(main_delay)  #main delay
