@@ -67,7 +67,7 @@ def vent_moisture(fan1, fan2):
         fan2.on()
         sleep(60)
         fan1.off()
-        fan2.off
+        fan2.off()
 
 def inhouseventilation(fan2):
         print('moving air around...\n')
