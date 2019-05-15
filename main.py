@@ -106,7 +106,7 @@ while(True):
         inhouseventilation(fan2)
 
     #light control:
-    if(daytime==True and emergencystate==False and humidity>humidity_min and humidity<humidity_max and temperature<=temp_max 
+    if(daytime==True and emergencystate==False and humidity>humidity_min and humidity<85 and temperature<=temp_max 
     and temperature>=temp_min and tvoc<tvoc_max and co2<co2_max):
         lamp.on()
     else:
