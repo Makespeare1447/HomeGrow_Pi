@@ -48,6 +48,7 @@ emergencystate = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 10              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
+
 #absolute maximum values:
 co2_min = 450
 co2_max = 1550
@@ -88,7 +89,6 @@ while(True):
     humidity = round(humidity, 2)
     temperature = round(temperature, 2)
     (co2, tvoc) = i2c_iAq_read(iaq_address)
-
 
 
     #check for emergency state:
