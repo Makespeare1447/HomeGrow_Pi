@@ -30,6 +30,8 @@ dht1 = Adafruit_DHT.DHT22
 buzzer = io.TonalBuzzer(buzzer_pin)
 fan1 = io.PWMLED(fan1_pin)
 fan2 = io.PWMLED(fan2_pin)
+bot = telepot.Bot('387161336:AAGKJeu_VaMk0Cn1PyrT0N0cCh3f9ijYwBM')
+
 
 #variable initialisation:
 temperature = 0
@@ -48,6 +50,7 @@ emergencystate = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 25              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
+chat_id = 7102843
 
 #absolute maximum values:
 co2_min = 450
@@ -140,5 +143,6 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
+    bot.sendMessage(7102843, 'Humidity: {}'.format(humidity) + ' %' )
     
     sleep(main_delay)  #main delay
