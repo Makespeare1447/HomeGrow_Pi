@@ -50,7 +50,7 @@ emergencystate = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 25              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
-chat_id = bot.getMe()['id']
+#chat_id = bot.getMe()['id']
 
 #absolute maximum values:
 co2_min = 450
