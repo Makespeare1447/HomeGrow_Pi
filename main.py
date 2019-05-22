@@ -128,7 +128,6 @@ while(True):
 
     oldhours = hours
     cycles = cycles + 1         
-    watering(pump, pumptime)
 
     #printing out information in command line:
     print('Humidity: {}'.format(humidity) + ' %')
