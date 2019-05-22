@@ -30,7 +30,7 @@ dht1 = Adafruit_DHT.DHT22
 buzzer = io.TonalBuzzer(buzzer_pin)
 fan1 = io.PWMLED(fan1_pin)
 fan2 = io.PWMLED(fan2_pin)
-bot = telepot.Bot('387161336:AAGKJeu_VaMk0Cn1PyrT0N0cCh3f9ijYwBM')
+#bot = telepot.Bot('387161336:AAGKJeu_VaMk0Cn1PyrT0N0cCh3f9ijYwBM')
 
 
 #variable initialisation:
@@ -143,8 +143,6 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
-    #bot.sendMessage(chat_id, 'Humidity:')
-    #response = bot.getUpdates()
-    #print(response)
+
     
     sleep(main_delay)  #main delay
