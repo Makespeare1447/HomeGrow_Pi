@@ -46,7 +46,7 @@ emergencystate = False
 
 #parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
-pumptime = 10              #seconds for plantwatering per wateringcycle
+pumptime = 25              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
 
 #absolute maximum values:
@@ -121,10 +121,14 @@ while(True):
     else:
         pass
 
+    #watering
+    if(((hours==8 or hours==19) and hours!=oldhours and emergencystate==False)):
+        watering(pump, pumptime)
+
 
     oldhours = hours
     cycles = cycles + 1         
-
+    watering(pump, pumptime)
 
     #printing out information in command line:
     print('Humidity: {}'.format(humidity) + ' %')
