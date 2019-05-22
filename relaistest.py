@@ -6,7 +6,7 @@ relais_2 = io.LED(pin=27, active_high=False)
 
 sleep(2)
 relais_2.on()
-sleep(20)
+sleep(300)
 relais_2.off()
 
 
