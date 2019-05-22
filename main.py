@@ -125,7 +125,7 @@ while(True):
         pass
 
     #watering
-    if(((hours==8 or hours==14 or hours==19) and hours!=oldhours and emergencystate==False)):
+    if(((hours==8 or hours==14 or hours==20) and hours!=oldhours and emergencystate==False)):
         watering(pump, pumptime)
 
 
