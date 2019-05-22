@@ -143,6 +143,8 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
-    bot.sendMessage(chat_id, 'Humidity:')
+    #bot.sendMessage(chat_id, 'Humidity:')
+    response = bot.getUpdates()
+    print(response)
     
     sleep(main_delay)  #main delay
