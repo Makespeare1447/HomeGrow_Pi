@@ -68,6 +68,9 @@ beep(buzzer)      #initial startup beep
 start_time = round(set_starttime(), 1)
 print('starting up...\n')
 
+hours = gethours()
+minutes = getminutes()
+oldhours = hours
 ##########################################################   MAIN LOOP  #################################################################################
 
 while(True):
