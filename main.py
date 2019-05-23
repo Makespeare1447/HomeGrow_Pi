@@ -54,7 +54,7 @@ chat_id = 7102843
 
 #absolute maximum values:
 co2_min = 450
-co2_max = 1550
+co2_max = 1750
 tvoc_min = 125
 tvoc_max = 450
 temp_min = 5
@@ -141,7 +141,9 @@ while(True):
     print('TVOC: {}'.format(tvoc) + ' ppb')
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
-    report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
+
+    if (cycles%10==0):                                                          #reporting to telegram every 10 cycles
+        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
     
     oldhours = hours
     cycles = cycles + 1   
