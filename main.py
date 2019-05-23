@@ -91,7 +91,7 @@ while(True):
     (humidity, temperature) = DHT_read(dht1, dht1_pin)
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
         emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc)
+        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles)
     humidity = round(humidity, 2)
     temperature = round(temperature, 2)
     (co2, tvoc) = i2c_iAq_read(iaq_address)
@@ -101,7 +101,7 @@ while(True):
     if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or tvoc<tvoc_min
      or co2<co2_min or tvoc>tvoc_max or co2>co2_max):
         emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc)             #trigger emergency routine
+        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles)             #trigger emergency routine
 
     #venting moist air in the morning and in the evening
     if((humidity>60 and (hours==7 or hours==19) and minutes==55 and emergencystate==False)):

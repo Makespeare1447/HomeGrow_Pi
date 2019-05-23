@@ -43,7 +43,7 @@ def beep(buzzer):
     sleep(0.15)
     buzzer.stop()
 
-def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc):
+def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles):
     lamp.off()
     pump.off()
     fan1.off()
@@ -54,8 +54,10 @@ def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc):
         print('Temperature: {}'.format(temperature))
         print('Co2: {}'.format(co2))
         print('TVOC: {}'.format(tvoc))
+        bot.send_message(chat_id, text='Emergency Shutdown! - last measurements: \n')
+        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
         beep(buzzer)
-        sleep(10)
+        sleep(60)
 
 def watering(pump, pumptime):
         print('watering plants...\n')
