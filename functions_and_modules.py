@@ -103,3 +103,7 @@ def i2c_iAq_read(address):
     TVOC = byte[7] * 2 ** 8 + byte[8]
 
     return (CO2, TVOC)
+
+def report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc):
+        bot.send_message(chat_id=chat_id, text='Humdity: {0} %\nTemperature: {1} deg\n'.format(humidity, temperature))
+

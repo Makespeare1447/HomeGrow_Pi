@@ -50,7 +50,7 @@ emergencystate = False
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 25              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
-#chat_id = bot.getMe()['id']
+chat_id = 7102843
 
 #absolute maximum values:
 co2_min = 450
@@ -142,7 +142,6 @@ while(True):
     print('TVOC: {}'.format(tvoc) + ' ppb')
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
-    bot.send_message(chat_id=7102843, text='Humdity: {0}'.format(humidity))
-
+    report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc)
     
     sleep(main_delay)  #main delay
