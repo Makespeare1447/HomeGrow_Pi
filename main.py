@@ -146,7 +146,7 @@ while(True):
     print('Wateringcycles: {}'.format(wateringcycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
-    if (cycles%10==0):                                                          #reporting to telegram every 10 cycles
+    if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
     
     oldhours = hours
