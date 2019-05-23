@@ -132,16 +132,18 @@ while(True):
         watering(pump, pumptime)
 
 
-    oldhours = hours
-    cycles = cycles + 1         
+          
 
-    #printing out information in command line:
+    #printing out information:
     print('Humidity: {}'.format(humidity) + ' %')
     print('Temperature: {}'.format(temperature) + ' deg')
     print('Co2: {}'.format(co2) + ' ppm')
     print('TVOC: {}'.format(tvoc) + ' ppb')
     print('Cycles: {}'.format(cycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
-    #report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc)
+    #report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
     
+    oldhours = hours
+    cycles = cycles + 1   
+
     sleep(main_delay)  #main delay

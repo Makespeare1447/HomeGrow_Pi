@@ -104,6 +104,7 @@ def i2c_iAq_read(address):
 
     return (CO2, TVOC)
 
-def report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc):
-        bot.send_message(chat_id=chat_id, text='Humdity: {0} %\nTemperature: {1} deg\n'.format(humidity, temperature))
+def report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles):
+        bot.send_message(chat_id=chat_id, text='Humdity: {0} %\nTemperature: {1} deg\nCo2: {2} ppm\nTVOC: {3} ppb\nCycles: {4} '.format(humidity, temperature,
+                co2, tvoc, cycles))
 
