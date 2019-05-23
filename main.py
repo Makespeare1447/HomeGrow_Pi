@@ -147,7 +147,7 @@ while(True):
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
     if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
-        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
+        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
     
     oldhours = hours
     cycles = cycles + 1   
