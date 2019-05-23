@@ -44,6 +44,7 @@ hours_old = 0
 minutes = 0
 minutes_old = 0
 cycles = 0                 #cyclenumber for debugging
+wateringcycles = 0
 emergencystate = False
 
 #parameter declaration:
@@ -54,7 +55,7 @@ chat_id = 7102843
 
 #absolute maximum values:
 co2_min = 450
-co2_max = 1750
+co2_max = 1850
 tvoc_min = 125
 tvoc_max = 450
 temp_min = 5
@@ -70,6 +71,7 @@ fan1.off()
 beep(buzzer)      #initial startup beep
 start_time = round(set_starttime(), 1)
 print('starting up...\n')
+bot.send_message(chat_id=chat_id, text='Hello, i am starting up now...\n')
 
 hours = gethours()
 minutes = getminutes()
@@ -91,7 +93,7 @@ while(True):
     (humidity, temperature) = DHT_read(dht1, dht1_pin)
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
         emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles)
+        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles)
     humidity = round(humidity, 2)
     temperature = round(temperature, 2)
     (co2, tvoc) = i2c_iAq_read(iaq_address)
@@ -101,7 +103,7 @@ while(True):
     if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or tvoc<tvoc_min
      or co2<co2_min or tvoc>tvoc_max or co2>co2_max):
         emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles)             #trigger emergency routine
+        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, watering)             #trigger emergency routine
 
     #venting moist air in the morning and in the evening
     if((humidity>60 and (hours==7 or hours==19) and minutes==55 and emergencystate==False)):
@@ -130,6 +132,7 @@ while(True):
     #watering
     if(((hours==8 or hours==14 or hours==20) and hours!=oldhours and emergencystate==False)):
         watering(pump, pumptime)
+        wateringcycles = wateringcycles + 1
 
 
           
@@ -140,6 +143,7 @@ while(True):
     print('Co2: {}'.format(co2) + ' ppm')
     print('TVOC: {}'.format(tvoc) + ' ppb')
     print('Cycles: {}'.format(cycles))
+    print('Wateringcycles: {}'.format(wateringcycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
 
     if (cycles%10==0):                                                          #reporting to telegram every 10 cycles
