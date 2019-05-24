@@ -46,6 +46,12 @@ minutes_old = 0
 cycles = 0                 #cyclenumber for debugging
 wateringcycles = 0
 emergencystate = False
+humidity_list = []
+temperature_list = []
+timestamp_list = []
+seconds_since_start_list = []
+co2_list = []
+tvoc_list = []
 
 #parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
@@ -82,6 +88,7 @@ while(True):
     #get actual time:
     hours = gethours()
     minutes = getminutes()
+    timestamp = time.strftime("%H:%M:%S")
 
     #check if daytime:
     if(hours>=daytime_interval[0] and hours<daytime_interval[1]):
@@ -134,6 +141,13 @@ while(True):
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
+    #logging data
+    humidity_list.append(humidity)
+    temperature_list.append(temperature)
+    timestamp_list.append(timestamp)
+    seconds_since_start_list.append(int(round(time_since_start(start_time))))
+    co2_list.append(co2)
+    tvoc_list.append(tvoc)
 
           
 
@@ -145,9 +159,11 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Wateringcycles: {}'.format(wateringcycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
-
+    print(humidity_list)
+    print(timestamp)
     if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
+        
     
     oldhours = hours
     cycles = cycles + 1   
