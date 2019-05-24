@@ -142,12 +142,13 @@ while(True):
         wateringcycles = wateringcycles + 1
 
     #logging data
-    humidity_list.append(humidity)
-    temperature_list.append(temperature)
-    timestamp_list.append(timestamp)
-    seconds_since_start_list.append(int(round(time_since_start(start_time))))
-    co2_list.append(co2)
-    tvoc_list.append(tvoc)
+    if (cycles%20==0):
+        humidity_list.append(humidity)
+        temperature_list.append(temperature)
+        timestamp_list.append(timestamp)
+        seconds_since_start_list.append(int(round(time_since_start(start_time))))
+        co2_list.append(co2)
+        tvoc_list.append(tvoc)
 
           
 
@@ -159,8 +160,6 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Wateringcycles: {}'.format(wateringcycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
-    print(humidity_list)
-    print(timestamp)
     if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
         
