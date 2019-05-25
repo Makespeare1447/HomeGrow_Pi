@@ -110,7 +110,7 @@ while(True):
     if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or tvoc<tvoc_min
      or co2<co2_min or tvoc>tvoc_max or co2>co2_max):
         emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, watering)             #trigger emergency routine
+        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles)             #trigger emergency routine
 
     #venting moist air in the morning and in the evening
     if((humidity>60 and (hours==7 or hours==19) and minutes==55 and emergencystate==False)):

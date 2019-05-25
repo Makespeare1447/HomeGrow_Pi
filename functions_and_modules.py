@@ -56,7 +56,7 @@ def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, 
         print('Co2: {}'.format(co2))
         print('TVOC: {}'.format(tvoc))
         bot.send_message(chat_id, text='Emergency Shutdown! - last measurements: \n')
-        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles)
+        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
         beep(buzzer)
         sleep(60)
 
