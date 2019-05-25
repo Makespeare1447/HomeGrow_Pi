@@ -160,9 +160,9 @@ def plot_figure(bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_li
 
         print('saving plot...')
         bot.send_message(chat_id=chat_id, text='saving plot...')
-        sleep(5)
+        sleep(3)
         plt.savefig('plot.png')
-        sleep(5)
+        sleep(3)
 
 def send_plot_per_telegram(bot, chat_id):
         print('sending plot per telegram...')
