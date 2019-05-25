@@ -59,14 +59,12 @@ def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, 
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
         beep(buzzer)
         print('Time til reboot: {}'.format(120-minutes))
-        bot.send_message(chat_id, text='Time til reboot: {}'.format(120-minutes))
+        bot.send_message(chat_id, text='time til reboot: {} minutes'.format(120-minutes))
         sleep(60)
     print('rebooting...')
     bot.send_message(chat_id, text='rebooting now...')
     os.system("sudo shutdown -r now")
         
-
-
 def watering(pump, pumptime):
         print('watering plants...\n')
         pump.on()

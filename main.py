@@ -10,9 +10,11 @@ print('setting parameters and importing libraries...')
 from functions_and_modules import *
 
 ##########################################################   SETUP  #################################################################################
-
-
 #setup is executed once at startup
+#setting permissions (necessary for sending image)
+print('setting permissions...')
+os.system('sudo chmod -R 777 .')
+
 #pin declaration:
 #lamp and pump are connected to the double relais module
 #fan1: humidity regulation, fan2: inhouse ventilation (air movement)
@@ -89,6 +91,13 @@ while(True):
     hours = gethours()
     minutes = getminutes()
     timestamp = time.strftime("%H:%M:%S")
+
+    #reboot at midnight:
+    if((hours==0 and hours!=oldhours)):
+        print('midnight! - rebooting...')
+        bot.send_message(chat_id, text='midnight! - rebooting...')
+        os.system("sudo shutdown -r now")
+
 
     #check if daytime:
     if(hours>=daytime_interval[0] and hours<daytime_interval[1]):
@@ -180,3 +189,5 @@ while(True):
     oldhours = hours
     cycles = cycles + 1   
     sleep(main_delay)  #main delay
+
+
