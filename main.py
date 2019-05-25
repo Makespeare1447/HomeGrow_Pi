@@ -32,7 +32,7 @@ dht1 = Adafruit_DHT.DHT22
 buzzer = io.TonalBuzzer(buzzer_pin)
 fan1 = io.PWMLED(fan1_pin)
 fan2 = io.PWMLED(fan2_pin)
-bot = telegram.Bot(token='387161336:AAGKJeu_VaMk0Cn1PyrT0N0cCh3f9ijYwBM')
+bot = telegram.Bot(token=token) #token comes from your configuration.py file
 
 
 #variable initialisation:
@@ -59,7 +59,7 @@ tvoc_list = []
 daytime_interval = (8,20)  #time interval for lights on
 pumptime = 25              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
-chat_id = 7102843
+#chat_id = set your telegram chat id here (or from configuration file)
 
 #absolute maximum values:
 co2_min = 450
