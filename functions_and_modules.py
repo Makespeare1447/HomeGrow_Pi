@@ -1,5 +1,6 @@
 ########################################################### IMPORTS ###############################################################################
-
+import matplotlib
+matplotlib.use('Agg')
 import time
 from time import sleep
 import os
