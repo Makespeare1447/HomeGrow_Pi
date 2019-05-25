@@ -33,10 +33,14 @@ def DHT_read(sensor, pin):
     sleep(3)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     sleep(3)
-    if humidity==None or temperature==None:
+    if humidity==None or temperature==None:     #2nd try
         sleep(3)
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
         sleep(3)
+    if humidity==None or temperature==None:             #if not okay after 2nd try then reboot
+        print('rebooting because of DHT error...')
+        bot.send_message(chat_id, text='rebooting because of DHT error...')
+        os.system("sudo shutdown -r now")
     return (humidity, temperature)
     
 def beep(buzzer):
