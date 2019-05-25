@@ -152,7 +152,7 @@ while(True):
 
           
 
-    #printing out information:
+    #printing out information
     print('Humidity: {}'.format(humidity) + ' %')
     print('Temperature: {}'.format(temperature) + ' deg')
     print('Co2: {}'.format(co2) + ' ppm')
@@ -163,8 +163,8 @@ while(True):
     if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
         
-    
-    if (cycles%5==0 and cycles!=0):
+    #plotting and send plot per telegram
+    if (cycles%100==0 and cycles!=0):
         plot_figure(bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
         temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max)
         send_plot_per_telegram(bot, chat_id)
