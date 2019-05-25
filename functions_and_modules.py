@@ -168,5 +168,5 @@ def send_plot_per_telegram(bot, chat_id):
         print('sending plot per telegram...')
         bot.send_message(chat_id=chat_id, text='sending plot per telegram...')
         sleep(3)
-        bot.send_photo(chat_id=chat_id, photo=open('plot.png', mode='r'))
+        bot.send_photo(chat_id=chat_id, photo=open('plot.png', mode='rb'))
         sleep(3)
