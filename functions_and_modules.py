@@ -110,3 +110,62 @@ def report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, 
         bot.send_message(chat_id=chat_id, text='Humdity: {0} %\nTemperature: {1} deg\nCo2: {2} ppm\nTVOC: {3} ppb\nCycles: {4}\nWateringcycles: {5} '.format(humidity, temperature,
                 co2, tvoc, cycles, wateringcycles))
 
+def plot_figure(bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list, temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max):
+        print('generating plot...')
+        bot.send_message(chat_id=chat_id, text='generating plot...')
+        sleep(2)
+        fig = plt.figure(figsize=(14,9))
+
+        tempplot = fig.add_subplot(221)
+        humidplot = fig.add_subplot(222)
+        co2plot = fig.add_subplot(223)
+        tvocplot = fig.add_subplot(224)
+
+        tempplot.plot(seconds_since_start_list, temperature_list, color='#C04CFD', linewidth=3)
+        humidplot.plot(seconds_since_start_list, humidity_list, color='#FC6DAB', linewidth=3)
+        co2plot.plot(seconds_since_start_list, co2_list, color='#64B6AC', linewidth=3)
+        tvocplot.plot(seconds_since_start_list, tvoc_list, color='#153B50', linewidth=3)
+
+        tempplot.axhline(y=temp_min, color='red', linewidth=0.8)
+        tempplot.axhline(y=temp_max, color='red', linewidth=0.8)
+        humidplot.axhline(y=humidity_min, color='red', linewidth=0.8)
+        humidplot.axhline(y=humidity_max, color='red', linewidth=0.8)
+        co2plot.axhline(y=co2_min, color='red', linewidth=0.8)
+        co2plot.axhline(y=co2_max, color='red', linewidth=0.8)
+        tvocplot.axhline(y=tvoc_min, color='red', linewidth=0.8)
+        tvocplot.axhline(y=tvoc_max, color='red', linewidth=0.8)
+
+        tempplot.set_xlabel('Time [s]')
+        humidplot.set_xlabel('Time [s]')
+        co2plot.set_xlabel('Time [s]')
+        tvocplot.set_xlabel('Time [s]')
+        tempplot.set_ylabel('Temperature [°C]')
+        humidplot.set_ylabel('Humidity [%]')
+        co2plot.set_ylabel('Co2 [ppm]')
+        tvocplot.set_ylabel('TVOC [ppb]')
+
+        tempplot.set_facecolor("lightgray")
+        humidplot.set_facecolor("lightgray")
+        co2plot.set_facecolor("lightgray")
+        tvocplot.set_facecolor("lightgray")
+        fig.set_facecolor("#E9E9E9")
+
+        tempplot.grid()
+        humidplot.grid()
+        co2plot.grid()
+        tvocplot.grid()
+
+        plt.tight_layout()
+
+        print('saving plot...')
+        bot.send_message(chat_id=chat_id, text='saving plot...')
+        sleep(5)
+        plt.savefig('plot.png')
+        sleep(5)
+
+def send_plot_per_telegram(bot, chat_id):
+        print('sending plot per telegram...')
+        bot.send_message(chat_id=chat_id, text='sending plot per telegram...')
+        sleep(3)
+        bot.send_photo(chat_id=chat_id, photo=open('plot.png', 'rb'))
+        sleep(3)

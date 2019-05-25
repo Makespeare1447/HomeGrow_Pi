@@ -146,7 +146,7 @@ while(True):
         humidity_list.append(humidity)
         temperature_list.append(temperature)
         timestamp_list.append(timestamp)
-        seconds_since_start_list.append(int(round(time_since_start(start_time))))
+        seconds_since_start_list.append(int(round(time_since_start(start_time), 0)))
         co2_list.append(co2)
         tvoc_list.append(tvoc)
 
@@ -164,7 +164,19 @@ while(True):
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
         
     
+    if (cycles%20==0):
+        plot_figure(bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
+        temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max)
+        send_plot_per_telegram(bot, chat_id)
+        
+        
+
+
+
+
+
+
+
     oldhours = hours
     cycles = cycles + 1   
-
     sleep(main_delay)  #main delay
