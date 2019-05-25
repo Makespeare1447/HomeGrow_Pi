@@ -11,7 +11,7 @@ import gpiozero as io
 from gpiozero.tones import Tone 
 from smbus2 import SMBusWrapper, i2c_msg               #for i2c devices
 import Adafruit_DHT
-import Adafruit_Python_SSD1306   
+#import Adafruit_Python_SSD1306   #oled if necessary
 import telegram
 
 
