@@ -186,7 +186,7 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         print('saving plot...')
         bot.send_message(chat_id=chat_id, text='saving plot...')
         sleep(2)
-        plt.savefig('plot.png')
+        plt.savefig('plot.png',  facecolor=fig.get_facecolor(), edgecolor=fig.get_edgecolor())
         sleep(2)
 
 def send_plot_per_telegram(bot, chat_id):
