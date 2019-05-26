@@ -175,10 +175,10 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         co2plot.legend()
         tvocplot.legend()
 
-        plt.setp(tempplot.spines.values(), linewidth=2)
-        plt.setp(humidplot.spines.values(), linewidth=2)
-        plt.setp(co2plot.spines.values(), linewidth=2)
-        plt.setp(tvocplot.spines.values(), linewidth=2)
+        #plt.setp(tempplot.spines.values(), linewidth=2)
+        #plt.setp(humidplot.spines.values(), linewidth=2)
+        #plt.setp(co2plot.spines.values(), linewidth=2)
+        #plt.setp(tvocplot.spines.values(), linewidth=2)
 
 
         plt.tight_layout()
