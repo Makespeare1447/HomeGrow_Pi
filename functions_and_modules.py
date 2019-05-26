@@ -135,10 +135,10 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         co2plot = fig.add_subplot(223)
         tvocplot = fig.add_subplot(224)
 
-        tempplot.plot(timestamp_list, temperature_list, color='#C04CFD', label='Temperature', linewidth=3)
-        humidplot.plot(timestamp_list, humidity_list, color='#FC6DAB', label='Humidity', linewidth=3)
-        co2plot.plot(timestamp_list, co2_list, color='#1f6600', label='Co2', linewidth=3)
-        tvocplot.plot(timestamp_list, tvoc_list, color='#153B50', label='TVOC', linewidth=3)
+        tempplot.plot(seconds_since_start_list, temperature_list, color='#C04CFD', label='Temperature', linewidth=3)
+        humidplot.plot(seconds_since_start_list, humidity_list, color='#FC6DAB', label='Humidity', linewidth=3)
+        co2plot.plot(seconds_since_start_list, co2_list, color='#1f6600', label='Co2', linewidth=3)
+        tvocplot.plot(seconds_since_start_list, tvoc_list, color='#153B50', label='TVOC', linewidth=3)
 
         tempplot.axhline(y=temp_min, color='red', linewidth=0.8)
         tempplot.axhline(y=temp_max, color='red', linewidth=0.8)
