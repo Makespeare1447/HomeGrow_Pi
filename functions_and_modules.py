@@ -124,7 +124,7 @@ def report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, 
         bot.send_message(chat_id=chat_id, text='Humdity: {0} %\nTemperature: {1} deg\nCo2: {2} ppm\nTVOC: {3} ppb\nCycles: {4}\nWateringcycles: {5} '.format(humidity, temperature,
                 co2, tvoc, cycles, wateringcycles))
 
-def plot_figure(bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list, temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max):
+def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list, temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max):
         print('generating plot...')
         bot.send_message(chat_id=chat_id, text='generating plot...')
         sleep(2)

@@ -174,7 +174,7 @@ while(True):
         
     #plotting and send plot per telegram
     if (cycles%100==0 and cycles!=0):
-        plot_figure(bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
+        plot_figure(timestamp_list, bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
         temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max)
         send_plot_per_telegram(bot, chat_id)
         
