@@ -57,7 +57,7 @@ def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, 
     pump.off()
     fan1.off()
     fan2.off()
-    for minutes in range (120):
+    for minutes in range (60):
         print("Emergency Shutdown - last measurements: ")
         print('Humidity: {}'.format(humidity))
         print('Temperature: {}'.format(temperature))
@@ -66,8 +66,8 @@ def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, 
         bot.send_message(chat_id, text='Emergency Shutdown! - last measurements: \n')
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
         beep(buzzer)
-        print('Time til reboot: {}'.format(120-minutes))
-        bot.send_message(chat_id, text='time til reboot: {} minutes'.format(120-minutes))
+        print('Time til reboot: {}'.format(60-minutes))
+        bot.send_message(chat_id, text='time til reboot: {} minutes'.format(60-minutes))
         sleep(60)
     print('rebooting...')
     bot.send_message(chat_id, text='rebooting now...')

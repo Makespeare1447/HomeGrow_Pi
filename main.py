@@ -138,7 +138,7 @@ while(True):
 
     #fan control:
     if(cycles%5 == 0):                                                   #check every 5 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32 or co2>=1500) and emergencystate==False and daytime==True):
+        if((humidity>=80 or temperature>=32 or co2>=1500 or tvoc>=380) and emergencystate==False and daytime==True):
             fan1.on()
         else:
             fan1.off()
