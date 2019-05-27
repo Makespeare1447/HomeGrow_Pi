@@ -48,6 +48,7 @@ minutes_old = 0
 cycles = 0                 #cyclenumber for debugging
 wateringcycles = 0
 emergencystate = False
+lampstate = False
 humidity_list = []
 temperature_list = []
 timestamp_list = []
@@ -143,8 +144,10 @@ while(True):
     if(daytime==True and emergencystate==False and humidity>humidity_min and humidity<85 and temperature<=temp_max 
     and temperature>=temp_min and tvoc<tvoc_max and co2<co2_max):
         lamp.on()
+        lampstate = True
     else:
         lamp.off()
+        lampstate = False
 
     #fan control:
     if(cycles%5 == 0):                                                   #check every 5 cycles if fan is necessary (hysteresis)
@@ -179,8 +182,14 @@ while(True):
     print('Cycles: {}'.format(cycles))
     print('Wateringcycles: {}'.format(wateringcycles))
     print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
+    if lampstate==True:
+        print('lamp on')
+    else:
+        print('lamp off')
+
+
     if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
-        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles)
+        report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles, lampstate)
         
     #plotting and send plot per telegram
     if (cycles%200==0 and cycles!=0):
