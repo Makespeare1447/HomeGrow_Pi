@@ -77,9 +77,19 @@ pump.off()
 fan1.off()
 
 beep(buzzer)      #initial startup beep
+
 start_time = round(set_starttime(), 1)
+
 print('starting up...\n')
 bot.send_message(chat_id=chat_id, text='Hello, i am starting up now...\n')
+
+print('venting air on startup...')
+bot.send_message(chat_id=chat_id, text='venting air on startup...\n')
+fan1.on()
+fan2.on()
+sleep(15)
+fan1.off()
+fan2.off()
 
 hours = gethours()
 minutes = getminutes()
@@ -122,7 +132,7 @@ while(True):
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles)             #trigger emergency routine
 
     #venting moist air in the morning and in the evening
-    if((humidity>60 and (hours==7 or hours==19) and minutes==55 and emergencystate==False)):
+    if((humidity>60 and (hours==7 or hours==19) and minutes==56 and emergencystate==False)):
         vent_moisture(fan1, fan2)
 
     #check for inhouse ventilation:
@@ -138,7 +148,7 @@ while(True):
 
     #fan control:
     if(cycles%5 == 0):                                                   #check every 5 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32 or co2>=1500 or tvoc>=380) and emergencystate==False and daytime==True):
+        if((humidity>=80 or temperature>=32 or co2>=1450 or tvoc>=350) and emergencystate==False and daytime==True):
             fan1.on()
         else:
             fan1.off()
