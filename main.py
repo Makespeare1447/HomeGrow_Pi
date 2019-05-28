@@ -116,14 +116,12 @@ while(True):
     else:
         daytime = False
 
-    #Measurements:
-    (humidity, temperature) = DHT_read(dht1, dht1_pin, bot, chat_id)
-    if (type(humidity) != float or type(temperature) != float):         #check if DHT works
-        emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles)
-    humidity = round(humidity, 2)
-    temperature = round(temperature, 2)
-    (co2, tvoc) = i2c_iAq_read(iaq_address)
+    #Measurements every 2 cycles:
+    if cycles%2==0:
+        (humidity, temperature) = DHT_read(dht1, dht1_pin, bot, chat_id)
+        humidity = round(humidity, 2)
+        temperature = round(temperature, 2)
+        (co2, tvoc) = i2c_iAq_read(iaq_address)
 
 
     #check for emergency state:
@@ -137,7 +135,7 @@ while(True):
         vent_moisture(fan1, fan2)
 
     #check for inhouse ventilation:
-    if(daytime==True and cycles%100==0 and emergencystate==False):
+    if(daytime==True and cycles%100==0 and emergencystate==False and cycles!=0):
         inhouseventilation(fan2)
 
     #light control:
@@ -183,12 +181,12 @@ while(True):
     print('Wateringcycles: {}'.format(wateringcycles))
     print('Seconds since program start: {}'.format(int(round(time_since_start(start_time), 0))))
     if lampstate==True:
-        print('lamp on\n')
+        print('light is on\n')
     else:
-        print('lamp off\n')
+        print('light is off\n')
 
 
-    if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
+    if (cycles%15==0):                #reporting to telegram every 15 cycles
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles, lampstate)
         
     #plotting and send plot per telegram
