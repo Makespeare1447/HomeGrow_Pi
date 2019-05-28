@@ -29,7 +29,7 @@ def getminutes():
     minutes = time.strftime("%M")
     return int(minutes)
 
-def DHT_read(sensor, pin):
+def DHT_read(sensor, pin, bot, chat_id):
     sleep(3)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     sleep(3)

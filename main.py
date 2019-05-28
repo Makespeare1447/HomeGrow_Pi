@@ -117,7 +117,7 @@ while(True):
         daytime = False
 
     #Measurements:
-    (humidity, temperature) = DHT_read(dht1, dht1_pin)
+    (humidity, temperature) = DHT_read(dht1, dht1_pin, bot, chat_id)
     if (type(humidity) != float or type(temperature) != float):         #check if DHT works
         emergencystate = True
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles)
@@ -181,11 +181,11 @@ while(True):
     print('TVOC: {}'.format(tvoc) + ' ppb')
     print('Cycles: {}'.format(cycles))
     print('Wateringcycles: {}'.format(wateringcycles))
-    print('Seconds since program start: {}\n'.format(int(round(time_since_start(start_time), 0))))
+    print('Seconds since program start: {}'.format(int(round(time_since_start(start_time), 0))))
     if lampstate==True:
-        print('lamp on')
+        print('lamp on\n')
     else:
-        print('lamp off')
+        print('lamp off\n')
 
 
     if (cycles%20==0):                                                          #reporting to telegram every 20 cycles
