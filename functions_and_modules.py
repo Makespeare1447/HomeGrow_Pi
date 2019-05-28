@@ -34,9 +34,9 @@ def DHT_read(sensor, pin, bot, chat_id):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     sleep(3)
     if humidity==None or temperature==None:     #2nd try
-        sleep(3)
+        sleep(60)
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-        sleep(3)
+        sleep(60)
     if humidity==None or temperature==None:             #if not okay after 2nd try then reboot
         print('rebooting because of DHT error...')
         bot.send_message(chat_id, text='rebooting because of DHT error...')
