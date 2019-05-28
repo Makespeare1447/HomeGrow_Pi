@@ -12,8 +12,8 @@ from functions_and_modules import *
 ##########################################################   SETUP  #################################################################################
 #setup is executed once at startup
 #setting permissions (necessary for sending image)
-print('setting permissions...')
-os.system('sudo chmod -R 777 .')
+#print('setting permissions...')
+#os.system('sudo chmod -R 777 .')
 
 #pin declaration:
 #lamp and pump are connected to the double relais module
@@ -151,7 +151,7 @@ while(True):
 
     #fan control:
     if(cycles%5 == 0):                                                   #check every 5 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32 or co2>=1450 or tvoc>=350) and emergencystate==False and daytime==True):
+        if((humidity>=80 or temperature>=32 or co2>=1350 or tvoc>=270) and emergencystate==False and daytime==True):
             fan1.on()
         else:
             fan1.off()

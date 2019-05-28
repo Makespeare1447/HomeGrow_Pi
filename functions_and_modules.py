@@ -191,12 +191,12 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         print('saving plot...')
         bot.send_message(chat_id=chat_id, text='saving plot...')
         sleep(2)
-        plt.savefig('plot.png',  facecolor=fig.get_facecolor(), edgecolor=fig.get_edgecolor())
+        plt.savefig('/home/Veggie_Pi/plot.png',  facecolor=fig.get_facecolor(), edgecolor=fig.get_edgecolor())
         sleep(2)
 
 def send_plot_per_telegram(bot, chat_id):
         print('sending plot per telegram...')
         bot.send_message(chat_id=chat_id, text='sending plot per telegram...')
         sleep(3)
-        bot.send_photo(chat_id=chat_id, photo=open('plot.png', mode='rb'))
+        bot.send_photo(chat_id=chat_id, photo=open('/home/Veggie_Pi/plot.png', mode='rb'))
         sleep(3)
