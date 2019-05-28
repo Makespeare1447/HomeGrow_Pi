@@ -12,8 +12,8 @@ from functions_and_modules import *
 ##########################################################   SETUP  #################################################################################
 #setup is executed once at startup
 #setting permissions (necessary for sending image)
-#print('setting permissions...')
-#os.system('sudo chmod -R 777 .')
+print('setting permissions...')
+os.system('sudo chmod -R 777 .')
 
 #pin declaration:
 #lamp and pump are connected to the double relais module
