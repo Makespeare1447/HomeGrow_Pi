@@ -148,7 +148,7 @@ while(True):
         lampstate = False
 
     #fan control:
-    if(cycles%2 == 0):                                                   #check every 2 cycles if fan is necessary (hysteresis)
+    if(cycles%2 == 0):     #check every 2 cycles if fan is necessary (hysteresis)
         if((humidity>=80 or temperature>=32 or co2>=1250 or tvoc>=240) and emergencystate==False and daytime==True):
             fan1.on()
         elif((co2>=1750 or tvoc>=400) and emergencystate==False and daytime ==True):
@@ -164,8 +164,18 @@ while(True):
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
+    #deleting first elemtent of lists if length exceeds 50k
+    if len(seconds_since_start_list)>50000:
+        humidity_list = humidity_list[1:]
+        temperature_list = temperature_list[1:]
+        timestamp_list = timestamp_list[1:]
+        seconds_since_start_list = seconds_since_start_list[1:]
+        co2_list = co2_list[1:]
+        tvoc_list = tvoc_list[1:]
+
+
     #logging data
-    if (cycles%20==0):
+    if (cycles%2==0):
         humidity_list.append(humidity)
         temperature_list.append(temperature)
         timestamp_list.append(timestamp)
@@ -199,10 +209,6 @@ while(True):
         send_plot_per_telegram(bot, chat_id)
         
         
-
-
-
-
 
 
 
