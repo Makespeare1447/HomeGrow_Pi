@@ -148,13 +148,16 @@ while(True):
         lampstate = False
 
     #fan control:
-    if(cycles%5 == 0):                                                   #check every 5 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32 or co2>=1350 or tvoc>=270) and emergencystate==False and daytime==True):
+    if(cycles%2 == 0):                                                   #check every 2 cycles if fan is necessary (hysteresis)
+        if((humidity>=80 or temperature>=32 or co2>=1250 or tvoc>=240) and emergencystate==False and daytime==True):
             fan1.on()
+        elif((co2>=1750 or tvoc>=400) and emergencystate==False and daytime ==True):
+            fan1.on()
+            fan2.on()
         else:
             fan1.off()
-    else:
-        pass
+            fan2.off()
+
 
     #watering
     if(((hours==8 or hours==14 or hours==20) and hours!=oldhours and emergencystate==False)):
