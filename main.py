@@ -125,10 +125,9 @@ while(True):
 
 
     #check for emergency state:
-    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or tvoc<tvoc_min
-     or co2<co2_min or tvoc>tvoc_max or co2>co2_max):
+    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or co2<co2_min or co2>co2_max):
         emergencystate = True
-        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles)             #trigger emergency routine
+        emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles, lampstate)             #trigger emergency routine
 
     #venting moist air in the morning and in the evening
     if((humidity>60 and (hours==7 or hours==19) and minutes==56 and emergencystate==False)):
@@ -149,9 +148,9 @@ while(True):
 
     #fan control:
     if(cycles%2 == 0):     #check every 2 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32 or co2>=1250 or tvoc>=240) and emergencystate==False and daytime==True):
+        if((humidity>=80 or temperature>=32 or co2>=1250 or tvoc>=350) and emergencystate==False and daytime==True):
             fan1.on()
-        elif((co2>=1750 or tvoc>=400) and emergencystate==False and daytime ==True):
+        elif((co2>=1750 or tvoc>=420) and emergencystate==False and daytime ==True):
             fan1.on()
             fan2.on()
         else:

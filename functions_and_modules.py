@@ -55,7 +55,7 @@ def beep(buzzer):
     sleep(0.15)
     buzzer.stop()
 
-def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles):
+def emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles, lampstate):
     lamp.off()
     pump.off()
     fan1.off()
