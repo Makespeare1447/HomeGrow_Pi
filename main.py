@@ -139,7 +139,7 @@ while(True):
 
     #light control:
     if(daytime==True and emergencystate==False and humidity>humidity_min and humidity<85 and temperature<=temp_max 
-    and temperature>=temp_min and co2<co2_max):
+    and temperature>=temp_min):
         lamp.on()
         lampstate = True
     else:
