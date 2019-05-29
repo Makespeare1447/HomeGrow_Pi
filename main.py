@@ -64,7 +64,7 @@ main_delay = 2             #delay in seconds for main loop
 
 #absolute maximum values:
 co2_min = 450
-co2_max = 1850
+co2_max = 1950
 tvoc_min = 125
 tvoc_max = 599
 temp_min = 5
