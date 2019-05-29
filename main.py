@@ -101,7 +101,7 @@ while(True):
     #get actual time:
     hours = gethours()
     minutes = getminutes()
-    timestamp = time.strftime("%H:%M:%S")
+    timestamp = gettimestamp()
 
     #reboot at midnight:
     if((hours==0 and hours!=oldhours)):

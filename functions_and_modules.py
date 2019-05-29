@@ -20,6 +20,9 @@ from configuration import *
 
 ########################################################### FUNCTIONS ###############################################################################
 
+def gettimestamp():
+        timestamp = time.strftime("%H:%M:%S")
+        return timestamp
 
 def gethours():
     hours = time.strftime("%H")
