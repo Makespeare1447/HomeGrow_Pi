@@ -170,7 +170,7 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         humidplot.set_facecolor("#fefcdb")
         co2plot.set_facecolor("#fefcdb")
         tvocplot.set_facecolor("#fefcdb")
-        fig.set_facecolor("#b0f4e6")
+        fig.set_facecolor("#A2A2A2")
         fig.set_edgecolor("black")
 
         tempplot.grid()
