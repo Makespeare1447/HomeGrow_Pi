@@ -64,7 +64,7 @@ main_delay = 2             #delay in seconds for main loop
 
 #absolute maximum values:
 co2_min = 450
-co2_max = 1950
+co2_max = 3500
 tvoc_min = 125
 tvoc_max = 599
 temp_min = 5
@@ -125,7 +125,7 @@ while(True):
 
 
     #check for emergency state:
-    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max):
+    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or co2>co2_max):
         emergencystate = True
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles, lampstate)             #trigger emergency routine
 
@@ -148,14 +148,11 @@ while(True):
 
     #fan control:
     if(cycles%2 == 0):     #check every 2 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32 or co2>=1250 or tvoc>=350) and emergencystate==False and daytime==True):
-            fan1.on()
-        elif((co2>=1750 or tvoc>=420) and emergencystate==False and daytime ==True):
-            fan1.on()
-            fan2.on()
+        if((humidity>=80 or temperature>=32) and emergencystate==False and daytime==True):
+            fan1.on() 
         else:
             fan1.off()
-            fan2.off()
+           
 
 
     #watering
