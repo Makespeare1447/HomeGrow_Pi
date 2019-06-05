@@ -8,7 +8,7 @@ print('setting parameters and importing libraries...')
 
 ########################################################### IMPORTS #################################################################################
 from functions_and_modules import *
-me = SingleInstance() #from tendo - prevents multiple script instances
+#me = SingleInstance() #from tendo - prevents multiple script instances
 ##########################################################   SETUP  #################################################################################
 #setup is executed once at startup
 #setting permissions (necessary for sending image)

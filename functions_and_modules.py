@@ -14,7 +14,7 @@ import Adafruit_DHT
 #import Adafruit_Python_SSD1306   #oled if necessary
 import telegram
 from configuration import *
-import tendo
+#import tendo
 
 
 
