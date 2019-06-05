@@ -8,7 +8,7 @@ print('setting parameters and importing libraries...')
 
 ########################################################### IMPORTS #################################################################################
 from functions_and_modules import *
-
+me = SingleInstance() #from tendo - prevents multiple script instances
 ##########################################################   SETUP  #################################################################################
 #setup is executed once at startup
 #setting permissions (necessary for sending image)
@@ -58,7 +58,7 @@ tvoc_list = []
 
 #parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
-pumptime = 25              #seconds for plantwatering per wateringcycle
+pumptime = 10              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
 #chat_id = set your telegram chat id here (or from configuration file)
 
