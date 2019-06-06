@@ -137,7 +137,7 @@ while(True):
         vent_moisture(fan1, fan2)
 
     #check for inhouse ventilation:
-    if(daytime==True and cycles%100==0 and emergencystate==False and cycles!=0):
+    if(daytime==True and cycles%50==0 and emergencystate==False and cycles!=0):
         inhouseventilation(fan2)
 
     #light control:
@@ -198,11 +198,11 @@ while(True):
         print('light is off\n')
 
 
-    if (cycles%15==0):                #reporting to telegram every 15 cycles
+    if (cycles%10==0):                #reporting to telegram every 15 cycles
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles, lampstate)
         
     #plotting and send plot per telegram
-    if (cycles%200==0 and cycles!=0):
+    if (cycles%100==0 and cycles!=0):
         plot_figure(timestamp_list, bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
         temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max, humidity_target, temp_target)
         send_plot_per_telegram(bot, chat_id)

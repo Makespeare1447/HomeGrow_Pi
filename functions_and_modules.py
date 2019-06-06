@@ -36,7 +36,7 @@ def getminutes():
 
 def DHT_read(sensor, pin, bot, chat_id):
     print('reading DHT, this takes some time...')
-    sleep(10)
+    sleep(9)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     sleep(3)
     if humidity==None or temperature==None:     #2nd try
@@ -151,16 +151,16 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         co2plot.plot(seconds_since_start_list, co2_list, color='#1f6600', label='Co2', linewidth=3)
         tvocplot.plot(seconds_since_start_list, tvoc_list, color='#153B50', label='TVOC', linewidth=3)
 
-        tempplot.axhline(y=temp_min, color='red', linewidth=0.85)
-        tempplot.axhline(y=temp_target, color='green', linewidth=0.85)
-        tempplot.axhline(y=temp_max, color='red', linewidth=0.85)
-        humidplot.axhline(y=humidity_min, color='red', linewidth=0.85)
-        humidplot.axhline(y=humidity_max, color='red', linewidth=0.85)
-        humidplot.axhline(y=humidity_target, color='green', linewidth=0.85)
-        co2plot.axhline(y=co2_min, color='red', linewidth=0.85)
-        co2plot.axhline(y=co2_max, color='red', linewidth=0.85)
-        tvocplot.axhline(y=tvoc_min, color='red', linewidth=0.85)
-        tvocplot.axhline(y=tvoc_max, color='red', linewidth=0.85)
+        tempplot.axhline(y=temp_min, color='red', linewidth=0.9)
+        tempplot.axhline(y=temp_target, color='green', linewidth=0.9)
+        tempplot.axhline(y=temp_max, color='red', linewidth=0.9)
+        humidplot.axhline(y=humidity_min, color='red', linewidth=0.9)
+        humidplot.axhline(y=humidity_max, color='red', linewidth=0.9)
+        humidplot.axhline(y=humidity_target, color='green', linewidth=0.9)
+        co2plot.axhline(y=co2_min, color='red', linewidth=0.9)
+        co2plot.axhline(y=co2_max, color='red', linewidth=0.9)
+        tvocplot.axhline(y=tvoc_min, color='red', linewidth=0.9)
+        tvocplot.axhline(y=tvoc_max, color='red', linewidth=0.9)
 
         tempplot.set_xlabel('Time [s]', fontsize=12.5)
         humidplot.set_xlabel('Time [s]', fontsize=12.5)
