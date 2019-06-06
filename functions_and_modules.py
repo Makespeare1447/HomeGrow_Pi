@@ -35,13 +35,14 @@ def getminutes():
     return int(minutes)
 
 def DHT_read(sensor, pin, bot, chat_id):
-    sleep(3)
+    print('reading DHT, this takes some time...')
+    sleep(10)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     sleep(3)
     if humidity==None or temperature==None:     #2nd try
-        sleep(60)
+        sleep(360)
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-        sleep(60)
+        sleep(360)
     if humidity==None or temperature==None:             #if not okay after 2nd try then reboot
         print('rebooting because of DHT error...')
         bot.send_message(chat_id, text='rebooting because of DHT error...')
@@ -134,7 +135,7 @@ def report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, 
                 co2, tvoc, cycles, wateringcycles))
                 
 
-def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list, temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max):
+def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list, temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max, humidity_target, temp_target):
         print('generating plot...')
         bot.send_message(chat_id=chat_id, text='generating plot...')
         sleep(2)
@@ -150,14 +151,16 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         co2plot.plot(seconds_since_start_list, co2_list, color='#1f6600', label='Co2', linewidth=3)
         tvocplot.plot(seconds_since_start_list, tvoc_list, color='#153B50', label='TVOC', linewidth=3)
 
-        tempplot.axhline(y=temp_min, color='red', linewidth=0.8)
-        tempplot.axhline(y=temp_max, color='red', linewidth=0.8)
-        humidplot.axhline(y=humidity_min, color='red', linewidth=0.8)
-        humidplot.axhline(y=humidity_max, color='red', linewidth=0.8)
-        co2plot.axhline(y=co2_min, color='red', linewidth=0.8)
-        co2plot.axhline(y=co2_max, color='red', linewidth=0.8)
-        tvocplot.axhline(y=tvoc_min, color='red', linewidth=0.8)
-        tvocplot.axhline(y=tvoc_max, color='red', linewidth=0.8)
+        tempplot.axhline(y=temp_min, color='red', linewidth=0.85)
+        tempplot.axhline(y=temp_target, color='green', linewidth=0.85)
+        tempplot.axhline(y=temp_max, color='red', linewidth=0.85)
+        humidplot.axhline(y=humidity_min, color='red', linewidth=0.85)
+        humidplot.axhline(y=humidity_max, color='red', linewidth=0.85)
+        humidplot.axhline(y=humidity_target, color='green', linewidth=0.85)
+        co2plot.axhline(y=co2_min, color='red', linewidth=0.85)
+        co2plot.axhline(y=co2_max, color='red', linewidth=0.85)
+        tvocplot.axhline(y=tvoc_min, color='red', linewidth=0.85)
+        tvocplot.axhline(y=tvoc_max, color='red', linewidth=0.85)
 
         tempplot.set_xlabel('Time [s]', fontsize=12.5)
         humidplot.set_xlabel('Time [s]', fontsize=12.5)

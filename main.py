@@ -26,6 +26,9 @@ dht1_pin = 4
 buzzer_pin = 22
 iaq_address = 90
 
+#try to reset DHT:
+dht1 = io.LED(pin=lamp_pin, active_high=False)
+
 lamp = io.LED(pin=lamp_pin, active_high=False)
 pump = io.LED(pin=pump_pin, active_high=False)
 dht1 = Adafruit_DHT.DHT22
@@ -71,6 +74,8 @@ temp_min = 5
 temp_max = 36
 humidity_min = 15
 humidity_max = 98
+humidity_target = 81
+temp_target = 32
 
 #set device states (setup)
 lamp.off()
@@ -148,7 +153,7 @@ while(True):
 
     #fan control:
     if(cycles%2 == 0):     #check every 2 cycles if fan is necessary (hysteresis)
-        if((humidity>=80 or temperature>=32) and emergencystate==False and daytime==True):
+        if((humidity>=humidity_target or temperature>=temp_target) and emergencystate==False and daytime==True):
             fan1.on() 
         else:
             fan1.off()
@@ -160,7 +165,7 @@ while(True):
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
-    #deleting first elemtent of lists if length exceeds 50k
+    #deleting first element of lists if length exceeds 50k
     if len(seconds_since_start_list)>50000:
         humidity_list = humidity_list[1:]
         temperature_list = temperature_list[1:]
@@ -201,7 +206,7 @@ while(True):
     #plotting and send plot per telegram
     if (cycles%200==0 and cycles!=0):
         plot_figure(timestamp_list, bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
-        temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max)
+        temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max, humidity_target, temp_target)
         send_plot_per_telegram(bot, chat_id)
         
         
