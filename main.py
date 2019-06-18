@@ -59,7 +59,7 @@ tvoc_list = []
 
 #parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
-pumptime = 10              #seconds for plantwatering per wateringcycle
+pumptime = 12              #seconds for plantwatering per wateringcycle
 main_delay = 2             #delay in seconds for main loop
 #chat_id = set your telegram chat id here (or from configuration file)
 
@@ -72,8 +72,8 @@ temp_min = 5
 temp_max = 36
 humidity_min = 15
 humidity_max = 98
-humidity_target = 81
-temp_target = 32
+humidity_target = 81.5
+temp_target = 33.5
 
 #set device states (setup)
 lamp.off()
@@ -85,7 +85,7 @@ beep(buzzer)      #initial startup beep
 start_time = round(set_starttime(), 1)
 
 print('starting up...\n')
-bot.send_message(chat_id=chat_id, text='Hello, i am starting up now...\n')
+bot.send_message(chat_id=chat_id, text='Hello Sir, i am starting up now...\n')
 
 print('venting air on startup...')
 bot.send_message(chat_id=chat_id, text='venting air on startup...\n')
