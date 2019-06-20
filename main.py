@@ -59,8 +59,8 @@ tvoc_list = []
 
 #parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
-pumptime = 12              #seconds for plantwatering per wateringcycle
-main_delay = 2             #delay in seconds for main loop
+pumptime = 7              #seconds for plantwatering per wateringcycle
+main_delay = 1             #delay in seconds for main loop
 #chat_id = set your telegram chat id here (or from configuration file)
 
 #absolute maximum values:
