@@ -72,8 +72,8 @@ temp_min = 5
 temp_max = 36
 humidity_min = 15
 humidity_max = 98
-humidity_target = 81.5
-temp_target = 33.5
+humidity_target = 70
+temp_target = 32
 
 #set device states (setup)
 lamp.off()
