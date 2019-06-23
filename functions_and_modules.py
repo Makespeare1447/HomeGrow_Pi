@@ -36,9 +36,9 @@ def getminutes():
 
 def DHT_read(sensor, pin, bot, chat_id):
     print('reading DHT, this takes some time...')
-    sleep(9)
+    sleep(2)
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    sleep(3)
+    sleep(2)
     if humidity==None or temperature==None:     #2nd try
         sleep(360)
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
