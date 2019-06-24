@@ -203,7 +203,7 @@ while(True):
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles, lampstate)
         
     #plotting and send plot per telegram
-    if (minutes%5==0 and minutes!=oldminutes):
+    if (minutes%15==0 and minutes!=oldminutes):
         plot_figure(timestamp_list, bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
         temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max, humidity_target, temp_target)
         send_plot_per_telegram(bot, chat_id)
