@@ -96,7 +96,7 @@ def vent_moisture(fan1, fan2):
 def inhouseventilation(fan2):
         print('moving air around...\n')
         fan2.on()
-        sleep(10)
+        sleep(5)
         fan2.off()
 
 def set_starttime():
