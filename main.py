@@ -129,7 +129,8 @@ while(True):
 
 
     #check for emergency state:
-    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or co2>co2_max):
+    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or co2>co2_max or
+     co2==None or tvoc==None or humidity==None or temperature==None):
         emergencystate = True
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles, lampstate)             #trigger emergency routine
 
