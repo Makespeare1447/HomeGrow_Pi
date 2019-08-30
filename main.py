@@ -59,7 +59,7 @@ tvoc_list = []
 
 #parameter declaration:
 daytime_interval = (8,20)  #time interval for lights on
-pumptime = 7              #seconds for plantwatering per wateringcycle
+pumptime = 8              #seconds for plantwatering per wateringcycle
 main_delay = 1             #delay in seconds for main loop
 #chat_id = set your telegram chat id here (or from configuration file)
 
@@ -161,7 +161,7 @@ while(True):
 
 
     #watering
-    if(((hours==8 or hours==14 or hours==20) and hours!=oldhours and emergencystate==False)):
+    if(((hours==8 or hours==11 or hours==16 or hours==20) and hours!=oldhours and emergencystate==False)):
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
