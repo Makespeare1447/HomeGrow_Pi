@@ -58,7 +58,11 @@ co2_list = []
 tvoc_list = []
 
 #parameter declaration:
+<<<<<<< HEAD
 daytime_interval = (10,18)  #time interval for lights on
+=======
+daytime_interval = (8,20)  #time interval for lights on
+>>>>>>> b281beaa7b84639257f37b734d44317824876e3d
 pumptime = 8              #seconds for plantwatering per wateringcycle
 main_delay = 1             #delay in seconds for main loop
 #chat_id = set your telegram chat id here (or from configuration file)
@@ -129,7 +133,8 @@ while(True):
 
 
     #check for emergency state:
-    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or co2>co2_max):
+    if(humidity<humidity_min or humidity>humidity_max or temperature<temp_min or temperature>temp_max or co2>co2_max or
+     co2==None or tvoc==None or humidity==None or temperature==None):
         emergencystate = True
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles, lampstate)             #trigger emergency routine
 
@@ -160,7 +165,11 @@ while(True):
 
 
     #watering
+<<<<<<< HEAD
     if(((hours==10 or hours==14 or hours==19) and hours!=oldhours and emergencystate==False)):
+=======
+    if(((hours==8 or hours==11 or hours==16 or hours==20) and hours!=oldhours and emergencystate==False)):
+>>>>>>> b281beaa7b84639257f37b734d44317824876e3d
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
@@ -203,7 +212,7 @@ while(True):
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles, lampstate)
         
     #plotting and send plot per telegram
-    if (minutes%5==0 and minutes!=oldminutes):
+    if (minutes%15==0 and minutes!=oldminutes):
         plot_figure(timestamp_list, bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
         temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max, humidity_target, temp_target)
         send_plot_per_telegram(bot, chat_id)
