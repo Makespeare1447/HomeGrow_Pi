@@ -58,8 +58,8 @@ co2_list = []
 tvoc_list = []
 
 #parameter declaration:
-daytime_interval = (8,20)  #time interval for lights on
-pumptime = 7              #seconds for plantwatering per wateringcycle
+daytime_interval = (10,18)  #time interval for lights on
+pumptime = 8              #seconds for plantwatering per wateringcycle
 main_delay = 1             #delay in seconds for main loop
 #chat_id = set your telegram chat id here (or from configuration file)
 
@@ -73,7 +73,7 @@ temp_max = 36
 humidity_min = 15
 humidity_max = 98
 humidity_target = 70
-temp_target = 32
+temp_target = 30
 
 #set device states (setup)
 lamp.off()
@@ -107,10 +107,10 @@ while(True):
     minutes = getminutes()
     timestamp = gettimestamp()
 
-    #reboot at midnight:
-    if((hours==0 and hours!=oldhours)):
-        print('midnight! - rebooting...')
-        bot.send_message(chat_id, text='midnight! - rebooting...')
+    #reboot in the morning midnight:
+    if((hours==9 and hours!=oldhours)):
+        print('good morning! - rebooting...')
+        bot.send_message(chat_id, text='good morning! - rebooting...')
         os.system("sudo shutdown -r now")
 
 
@@ -134,7 +134,7 @@ while(True):
         emergency(lamp, pump, fan1, fan2, buzzer, humidity, temperature, co2, tvoc, bot, chat_id, cycles, wateringcycles, lampstate)             #trigger emergency routine
 
     #venting moist air in the morning and in the evening
-    if((humidity>60 and (hours==7 or hours==19) and minutes==56 and emergencystate==False)):
+    if((humidity>60 and (hours==9 or hours==18) and minutes==56 and emergencystate==False)):
         vent_moisture(fan1, fan2)
 
     #check for inhouse ventilation:
@@ -160,7 +160,7 @@ while(True):
 
 
     #watering
-    if(((hours==8 or hours==14 or hours==20) and hours!=oldhours and emergencystate==False)):
+    if(((hours==10 or hours==14 or hours==19) and hours!=oldhours and emergencystate==False)):
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
