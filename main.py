@@ -73,7 +73,7 @@ temp_max = 36
 humidity_min = 15
 humidity_max = 98
 humidity_target = 70
-temp_target = 30
+temp_target = 32
 
 #set device states (setup)
 lamp.off()
@@ -107,7 +107,7 @@ while(True):
     minutes = getminutes()
     timestamp = gettimestamp()
 
-    #reboot in the morning midnight:
+    #reboot in the morning :
     if((hours==9 and hours!=oldhours)):
         print('good morning! - rebooting...')
         bot.send_message(chat_id, text='good morning! - rebooting...')
@@ -161,7 +161,7 @@ while(True):
 
 
     #watering
-    if(((hours==10 or hours==14 or hours==19) and hours!=oldhours and emergencystate==False)):
+    if(((hours==8 or hours==10 or hours==14 or hours==19) and hours!=oldhours and emergencystate==False)):
         watering(pump, pumptime)
         wateringcycles = wateringcycles + 1
 
@@ -200,11 +200,11 @@ while(True):
         print('light is off\n')
 
 
-    if (minutes%2==0 and minutes!=oldminutes):                #reporting to telegram every 15 cycles
+    if (minutes%5==0 and minutes!=oldminutes):                #reporting to telegram every 5 minutes
         report_per_telegram(bot, chat_id, temperature, humidity, co2, tvoc, cycles, wateringcycles, lampstate)
         
     #plotting and send plot per telegram
-    if (minutes%15==0 and minutes!=oldminutes):
+    if (minutes%30ss==0 and minutes!=oldminutes):
         plot_figure(timestamp_list, bot, chat_id, temperature_list, humidity_list, co2_list, tvoc_list, seconds_since_start_list,
         temp_min, temp_max, humidity_min, humidity_max, co2_min, co2_max, tvoc_min, tvoc_max, humidity_target, temp_target)
         send_plot_per_telegram(bot, chat_id)
