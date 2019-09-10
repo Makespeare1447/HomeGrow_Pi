@@ -173,6 +173,8 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         co2plot.set_ylabel('Co2 [ppm]', fontsize=12.5, color='#d9ffed')
         tvocplot.set_ylabel('TVOC [ppb]', fontsize=12.5, color='#d9ffed')
 
+
+        """
         tempplot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
                     grid_color='#d9ffed')
         humidplot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
@@ -181,7 +183,8 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
                     grid_color='#d9ffed')
         tvocplot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
                     grid_color='#d9ffed')
-
+        """
+        
         tempplot.set_facecolor("#006961")
         humidplot.set_facecolor("#006961")
         co2plot.set_facecolor("#006961")
