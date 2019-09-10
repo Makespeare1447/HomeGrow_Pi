@@ -226,6 +226,7 @@ while(True):
     except:
         errorcounter = errorcounter + 1
         print('Error occured! - errorcounter = {}'.format(errorcounter))
+        bot.send_message(chat_id, text='Error occured! - errorcounter = {}'.format(errorcounter))
         if errorcounter>=maxerrors:
             print('5 errors occured - terminating program now...')
             bot.send_message(chat_id, text='5 errors occured - terminating program...')
