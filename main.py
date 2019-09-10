@@ -228,5 +228,5 @@ while(True):
         print('Error occured! - errorcounter = {}'.format(errorcounter))
         if errorcounter>=maxerrors:
             print('5 errors occured - rebooting now...')
-            bot.send_message(chat_id, text='5 errors occured - rebooting now...')
-            os.system("sudo shutdown -r now")
+            bot.send_message(chat_id, text='5 errors occured - terminating programm...')
+            sys.exit()
