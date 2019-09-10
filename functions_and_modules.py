@@ -142,6 +142,16 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         sleep(2)
         fig = plt.figure(figsize=(14,9))
 
+        plt.rcParams['xtick.color'] = '#d9ffed'
+        plt.rcParams['ytick.color'] = '#d9ffed'
+        plt.rcParams['xtick.labelsize'] = 13
+        plt.rcParams['ytick.labelsize'] = 13
+        plt.rcParams['ytick.color'] = '#d9ffed'
+        plt.rcParams['grid.color'] = '#d9ffed'
+        plt.rcParams['grid.linewidth'] = 2
+        plt.rcParams['grid.linewidth'] = 1
+        plt.rcParams['grid.linestyle'] = 'dashed'
+
         tempplot = fig.add_subplot(221)
         humidplot = fig.add_subplot(222)
         co2plot = fig.add_subplot(223)
@@ -163,28 +173,15 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         tvocplot.axhline(y=tvoc_min, color='#ff7979', linewidth=1.5)
         tvocplot.axhline(y=tvoc_max, color='#ff7979', linewidth=1.5)
 
+        tempplot.set_xlabel('Time [s]', fontsize=15, color='#d9ffed')
+        humidplot.set_xlabel('Time [s]', fontsize=15, color='#d9ffed')
+        co2plot.set_xlabel('Time [s]', fontsize=15, color='#d9ffed')
+        tvocplot.set_xlabel('Time [s]', fontsize=15, color='#d9ffed')
+        tempplot.set_ylabel('Temperature [°C]', fontsize=15, color='#d9ffed')
+        humidplot.set_ylabel('Humidity [%]', fontsize=15, color='#d9ffed')
+        co2plot.set_ylabel('Co2 [ppm]', fontsize=15, color='#d9ffed')
+        tvocplot.set_ylabel('TVOC [ppb]', fontsize=15, color='#d9ffed')
 
-        tempplot.set_xlabel('Time [s]', fontsize=12.5, color='#d9ffed')
-        humidplot.set_xlabel('Time [s]', fontsize=12.5, color='#d9ffed')
-        co2plot.set_xlabel('Time [s]', fontsize=12.5, color='#d9ffed')
-        tvocplot.set_xlabel('Time [s]', fontsize=12.5, color='#d9ffed')
-        tempplot.set_ylabel('Temperature [°C]', fontsize=12.5, color='#d9ffed')
-        humidplot.set_ylabel('Humidity [%]', fontsize=12.5, color='#d9ffed')
-        co2plot.set_ylabel('Co2 [ppm]', fontsize=12.5, color='#d9ffed')
-        tvocplot.set_ylabel('TVOC [ppb]', fontsize=12.5, color='#d9ffed')
-
-
-        """
-        tempplot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
-                    grid_color='#d9ffed')
-        humidplot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
-                    grid_color='#d9ffed')
-        co2plot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
-                    grid_color='#d9ffed')
-        tvocplot.tick_params(direction='out', length=6, width=2, colors='#d9ffed',
-                    grid_color='#d9ffed')
-        """
-        
         tempplot.set_facecolor("#006961")
         humidplot.set_facecolor("#006961")
         co2plot.set_facecolor("#006961")
@@ -192,10 +189,10 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         fig.set_facecolor("#173f45")
         fig.set_edgecolor("black")
 
-        tempplot.grid(linestyle='--', linewidth=1.5)
-        humidplot.grid(linestyle='--', linewidth=1.5)
-        co2plot.grid(linestyle='--', linewidth=1.5)
-        tvocplot.grid(linestyle='--', linewidth=1.5)
+        tempplot.grid()
+        humidplot.grid()
+        co2plot.grid()
+        tvocplot.grid()
 
         plt.tight_layout()
 
