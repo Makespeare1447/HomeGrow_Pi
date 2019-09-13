@@ -59,6 +59,7 @@ co2_list = []
 tvoc_list = []
 
 #parameter declaration:
+watering_active = False
 maxerrors = 5
 daytime_interval = (10,18)  #time interval for lights on
 pumptime = 8              #seconds for plantwatering per wateringcycle
@@ -164,7 +165,7 @@ while(True):
 
 
         #watering
-        if(((hours==8 or hours==10 or hours==14 or hours==19) and hours!=oldhours and emergencystate==False)):
+        if(((hours==8 or hours==10 or hours==14 or hours==19) and hours!=oldhours and watering_active==True and emergencystate==False)):
             watering(pump, pumptime)
             wateringcycles = wateringcycles + 1
 

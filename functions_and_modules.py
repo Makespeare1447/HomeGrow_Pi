@@ -151,6 +151,9 @@ def plot_figure(timestamp_list ,bot, chat_id, temperature_list, humidity_list, c
         plt.rcParams['grid.linewidth'] = 2
         plt.rcParams['grid.linewidth'] = 1
         plt.rcParams['grid.linestyle'] = 'dashed'
+        plt.rcParams['font.fantasy'] = 'Comic Sans MS'
+        plt.rcParams['axes.edgecolor'] = '#d9ffed'
+        plt.rcParams['axes.linewidth'] = 1.5
 
         tempplot = fig.add_subplot(221)
         humidplot = fig.add_subplot(222)
