@@ -96,7 +96,7 @@ fan1.on()
 fan2.on()
 sleep(15)
 fan1.off()
-#fan2.off()
+fan2.off()
 
 hours = gethours()
 minutes = getminutes()
