@@ -112,7 +112,7 @@ while(True):
         timestamp = gettimestamp()
 
         #shutdown in the evening :
-        if((hours==21 and hours!=oldhours)):
+        if(hours==21):
             print('good night! - shutting down...')
             bot.send_message(chat_id, text='good night! - shutting down...')
             os.system("sudo shutdown")
